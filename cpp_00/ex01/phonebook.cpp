@@ -1,7 +1,7 @@
 #include <iostream>
 #include "phonebook.hpp"
 
-std::cout << "Constructor of Phonebook called" << std::endl << std::endl;
+// std::cout << "Constructor of Phonebook called" << std::endl << std::endl;
 
 int	main()
 {
@@ -11,5 +11,7 @@ int	main()
 	{
 		std::cin >> str;
 		if (str == "ADD")
+			std::cout << "HELLO" << std::endl << std::endl;
+
 	}
 }
