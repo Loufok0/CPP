@@ -2,6 +2,7 @@
 # define CONTACT_H
 
 # include <iostream>
+# include "colors.hpp"
 
 class Contact
 {
@@ -12,11 +13,13 @@ class Contact
 		std::string		_lastName;
 		std::string		_nickName;
 		std::string		_number;
+		std::string		_secret;
 		bool			_actif;
 
 		Contact(void);
 		~Contact(void);
 
+	void	setSecret(std::string	str);
 	void	setNumber(std::string	str);
 	void	setNickName(std::string	str);
 	void	setLastName(std::string str);

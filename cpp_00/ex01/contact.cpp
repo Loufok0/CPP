@@ -14,26 +14,32 @@ Contact::~Contact()
 }
 
 
+void	Contact::setSecret(std::string	str)
+{
+	// std::cout << "Str : " << str << std::endl << std::endl;
+	this->_secret = str;
+}
+
 void	Contact::setNumber(std::string	str)
 {
-	std::cout << "Str : " << str << std::endl << std::endl;
+	// std::cout << "Str : " << str << std::endl << std::endl;
 	this->_number = str;
 }
 
 void	Contact::setNickName(std::string	str)
 {
-	std::cout << "Str : " << str << std::endl << std::endl;
+	// std::cout << "Str : " << str << std::endl << std::endl;
 	this->_nickName = str;
 }
 
 void	Contact::setLastName(std::string	str)
 {
-	std::cout << "Str : " << str << std::endl << std::endl;
+	// std::cout << "Str : " << str << std::endl << std::endl;
 	this->_lastName = str;
 }
 
 void	Contact::setFirstName(std::string	str)
 {
-	std::cout << "Str : " << str << std::endl << std::endl;
+	// std::cout << "Str : " << str << std::endl << std::endl;
 	this->_firstName = str;
 }
