@@ -1,9 +1,39 @@
 #include <iostream>
-#include "phonebook.hpp"
+#include "contact.hpp"
 
-void	Contact::Contact(const std::string n, const std::string p)
+Contact::Contact()
 {
-	name = n;
-	phone = p;
-};
+	_actif = false;
+	std::cout << "Constructor of Contact called" << std::endl << std::endl;
+}
 
+
+Contact::~Contact()
+{
+	std::cout << "Desstructor of Contact called" << std::endl << std::endl;
+}
+
+
+void	Contact::setNumber(std::string	str)
+{
+	std::cout << "Str : " << str << std::endl << std::endl;
+	this->_number = str;
+}
+
+void	Contact::setNickName(std::string	str)
+{
+	std::cout << "Str : " << str << std::endl << std::endl;
+	this->_nickName = str;
+}
+
+void	Contact::setLastName(std::string	str)
+{
+	std::cout << "Str : " << str << std::endl << std::endl;
+	this->_lastName = str;
+}
+
+void	Contact::setFirstName(std::string	str)
+{
+	std::cout << "Str : " << str << std::endl << std::endl;
+	this->_firstName = str;
+}

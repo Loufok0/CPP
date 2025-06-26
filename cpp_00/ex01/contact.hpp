@@ -1,5 +1,7 @@
-#include <iostream>
-#include "phonebook.hpp"
+#ifndef CONTACT_H
+# define CONTACT_H
+
+# include <iostream>
 
 class Contact
 {
@@ -9,16 +11,16 @@ class Contact
 		std::string		_firstName;
 		std::string		_lastName;
 		std::string		_nickName;
-		std::string		_phone;
+		std::string		_number;
+		bool			_actif;
 
-		Contact()
-		{
-			name = "NULL";
-			phone = "NULL";
-		};
+		Contact(void);
+		~Contact(void);
 
-		Contact(const std::string n, const std::string p);
-
-		std::string	getName() {return (_name);};
-
+	void	setNumber(std::string	str);
+	void	setNickName(std::string	str);
+	void	setLastName(std::string str);
+	void	setFirstName(std::string	str);
 };
+
+#endif
