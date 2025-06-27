@@ -1,5 +1,4 @@
 #include <iostream>
-#include <unistd.h>
 #include "phonebook.hpp"
 
 PhoneBook::PhoneBook()
@@ -13,6 +12,15 @@ PhoneBook::~PhoneBook()
 	std::cout << "Desstructor of PhoneBook called" << std::endl;
 }
 
+bool isNumber(const std::string& str)
+{
+	for (size_t i = 0; i < str.length(); ++i)
+	{
+		if (!std::isdigit(str[i]))
+			return false;
+	}
+	return !str.empty();
+}
 
 void	PhoneBook::showContacts()
 {
@@ -24,27 +32,43 @@ void	PhoneBook::showContacts()
 		sleep(1.5);
 		std::cout << "\033c";
 		std::cout << "Enter a command!" << std::endl;
+		return ;
 	}
 
-	std::cout << "==================================================================" << std::endl;
+	std::cout << "==================================================" << std::endl;
 	std::cout << "||";
-	std::cout << " Index\t\t" << "||";
-	std::cout << " First Name\t\t"  << "||";
-	std::cout << " Last Name\t\t" << "||";
-	std::cout << " Nick Name\t\t" << "||" << std::endl;
+	std::cout << "Index     " << "||";
+	std::cout << "First Name"  << "||";
+	std::cout << "Last Name " << "||";
+	std::cout << "Nick Name " << "||" << std::endl;
+	std::cout << "==================================================" << std::endl;
 
 	while (i < 8 && this->_contacts[i]._actif)
 	{
-		std::cout << i + 1 << "\t\t\t||";
-		print_contact(this->_contact[i]);
-		// std::cout << "==================================================================" << std::endl;
-		// std::cout << "||";
-		// std::cout << i + 1 << "\t\t\t||";
-		// std::cout << this->_contacts[i]._firstName << "\t\t\t||";
-		// std::cout << this->_contacts[i]._lastName << "\t\t\t||";
-		// std::cout << this->_contacts[i]._nickName << "\t\t\t||" << std::endl;
+		std::cout << "||";
+		std::cout << i << "         ||";
+		this->_contacts[i].printContact();
 		i++;
 	}
+	std::cout << "==================================================" << std::endl << std::endl;
+
+
+	std::string	str = "hello there";
+	int			n = 111;
+
+	std::cout << "Wich contact (index) do you want to print ?" << std::endl;
+	std::getline(std::cin, str);
+	n = std::atoi(str.c_str());
+	while (!isNumber(str) || n < 0 || n > this->_countacts - 1)
+	{
+		std::cout << "\033[F\033[F\033[F";
+		std::cout << "Error: Enter a number from 0 to " << this->_countacts - 1 << std::endl;
+		std::cout << "Wich contact (index) do you want to print ?" << std::endl;
+		std::getline(std::cin, str);
+		n = std::atoi(str.c_str());
+	}
+	this->_contacts[n].printContact();
+
 }
 
 void	PhoneBook::saveContact(Contact &Current)
@@ -110,7 +134,7 @@ void	entrance()
 	std::cout << " \\ \\/\\/ / -_) / _/ _ \\ '  \\/ -_) |  _/ _ \\" << BLUE "|  _/ ' \\/ _ \\ ' \\/ -_) _ \\/ _ \\/ _ \\ / /" RESET << std::endl;
 	std::cout << "  \\_/\\_/\\___|_\\__\\___/_|_|_\\___|  \\__\\___/" << BLUE "|_| |_||_\\___/_||_\\___|___/\\___/\\___/_\\_\\" RESET << std::endl;
 
-	sleep(1.5);
+	sleep(1);
 	std::cout << "\033c";
 	std::cout << "Enter a command!" << std::endl;
 }
