@@ -43,7 +43,7 @@ void	PhoneBook::showContacts()
 	std::cout << "Nick Name " << "||" << std::endl;
 	std::cout << "==================================================" << std::endl;
 
-	while (i < 8 && this->_contacts[i]._actif)
+	while (i < 8 && this->_contacts[i].getStatus())
 	{
 		std::cout << "||";
 		std::cout << i << "         ||";
@@ -73,7 +73,7 @@ void	PhoneBook::showContacts()
 
 void	PhoneBook::saveContact(Contact &Current)
 {
-	Current._actif = true;
+	Current.setStatus(true);
 	if (this->_countacts == 0)
 		this->_oldest = 0;
 	if (this->_countacts == 8)

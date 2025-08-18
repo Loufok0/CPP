@@ -82,3 +82,12 @@ void	Contact::showContact()
 	std::cout << std::endl;
 
 }
+
+void	Contact::setStatus(bool actif)
+{
+	this->_actif = actif;
+}
+bool	Contact::getStatus(void)
+{
+	return (this->_actif);
+}
