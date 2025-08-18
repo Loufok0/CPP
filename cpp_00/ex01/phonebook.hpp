@@ -7,18 +7,17 @@
 class PhoneBook
 {
 	private:
-		;
+		void	showContacts(void);
 	public:
 		Contact		_contacts[8];
 		int			_countacts;
 		int			_oldest;
 
-	PhoneBook(void);
-	~PhoneBook(void);
+		PhoneBook(void);
+		~PhoneBook(void);
 
-	void	addContact(void);
-	void	saveContact(Contact &Current);
-	void	showContacts(void);
+		void	addContact(void);
+		void	saveContact(Contact &Current);
 };
 
 #endif

@@ -5,7 +5,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = $(NAME).cpp
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:.cpp=.o)
 
 RM = rm -f
 
@@ -15,7 +15,7 @@ $(NAME): $(OBJS)
 	$(CXX) $(OBJS) $(CXXFLAGS) -o $(NAME)
 	@echo $(NAME)" compiled!\n"
 
-%.o: %.c
+%.o: %.cpp
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:

@@ -1,4 +1,4 @@
-#include <iostream>
+
 #include "phonebook.hpp"
 
 PhoneBook::PhoneBook()
@@ -67,7 +67,7 @@ void	PhoneBook::showContacts()
 		std::getline(std::cin, str);
 		n = std::atoi(str.c_str());
 	}
-	this->_contacts[n].printContact();
+	this->_contacts[n].showContact();
 
 }
 
@@ -94,31 +94,61 @@ void	PhoneBook::addContact(void)
 
 	std::cout << "\033c";
 	std::cout << "Adding contact" << std::endl << std::endl;
-	sleep(1);
+	sleep(0.5);
 	std::cout << "\033c";
 
 	std::cout << "Enter the first name of the new contact : ";
 	std::getline(std::cin, str);
+	while (str.length() == 0)
+	{
+		std::cout << "String not accepted..." << std::endl;
+		std::getline(std::cin, str);
+		std::cout << "\033[F\033[F";
+	}
 	Current.setFirstName(str);
 
 	std::cout << "\033c";
 	std::cout << "Enter the last name of the new contact : ";
 	std::getline(std::cin, str);
+	while (str.length() == 0)
+	{
+		std::cout << "String not accepted..." << std::endl;
+		std::getline(std::cin, str);
+		std::cout << "\033[F\033[F";
+	}
 	Current.setLastName(str);
 
 	std::cout << "\033c";
 	std::cout << "Enter the nick name of the new contact : ";
 	std::getline(std::cin, str);
+	while (str.length() == 0)
+	{
+		std::cout << "String not accepted..." << std::endl;
+		std::getline(std::cin, str);
+		std::cout << "\033[F\033[F";
+	}
 	Current.setNickName(str);
 
 	std::cout << "\033c";
 	std::cout << "Enter the phone number of the new contact : ";
 	std::getline(std::cin, str);
+	while (str.length() == 0)
+	{
+		std::cout << "String not accepted..." << std::endl;
+		std::getline(std::cin, str);
+		std::cout << "\033[F\033[F";
+	}
 	Current.setNumber(str);
 
 	std::cout << "\033c";
 	std::cout << "Enter the Darkest Secret of the new contact : ";
 	std::getline(std::cin, str);
+	while (str.length() == 0)
+	{
+		std::cout << "String not accepted..." << std::endl;
+		std::getline(std::cin, str);
+		std::cout << "\033[F\033[F";
+	}
 	Current.setSecret(str);
 
 	PhoneBook::saveContact(Current);
@@ -146,26 +176,28 @@ int	main()
 	PhoneBook		phonebook;
 
 	entrance();
-	while (str != "EXIT")
+	while (str != "EXIT" || str != "exit")
 	{
 		std::getline(std::cin, str);
-		if (str == "ADD")
+		if (str == "ADD" || str == "add")
 		{
 			std::cout << "\033c";
 			phonebook.addContact();
 			std::cout << "Contact added!" << std::endl << std::endl;
 		}
-		else if (str == "SEARCH")
+		else if (str == "SEARCH" || str == "search")
 		{
 			std::cout << "\033c";
 			phonebook.showContacts();
+			std::cout << std::endl << "Enter a command!" << std::endl;
+			continue;
 		}
+		else if (str == "EXIT" || str == "exit")
+			continue;
 		else
-		{
-			std::cout << "Error, command not found!" << std::endl;
-			sleep(1);
-			std::cout << "\033c";
-			std::cout << "Enter a command!" << std::endl;
-		}
+			std::cout << "Error, command found!" << std::endl;
+		sleep(1);
+		std::cout << "\033c";
+		std::cout << "Enter a command!" << std::endl;
 	}
 }

@@ -4,13 +4,13 @@
 Contact::Contact()
 {
 	_actif = false;
-	std::cout << "Constructor of Contact called" << std::endl << std::endl;
+	//std::cout << "Constructor of Contact called" << std::endl << std::endl;
 }
 
 
 Contact::~Contact()
 {
-	std::cout << "Desstructor of Contact called" << std::endl << std::endl;
+	//std::cout << "Desstructor of Contact called" << std::endl << std::endl;
 }
 
 
@@ -58,14 +58,27 @@ void	Contact::printInfo(std::string str, int len)
 		std::cout << str;
 	while (len++ < 10)
 		std::cout << " ";
-	std::cout << "||";
 }
 
 void	Contact::printContact()
 {
 	this->printInfo(this->_firstName, this->_firstName.length());
+	std::cout << "||";
 	this->printInfo(this->_lastName, this->_lastName.length());
+	std::cout << "||";
 	this->printInfo(this->_nickName, this->_nickName.length());
+	std::cout << "||";
+	std::cout << std::endl;
+
+}
+
+void	Contact::showContact()
+{
+	std::cout << "First Name: " << this->_firstName << std::endl;
+	std::cout << "Last Name: " << this->_lastName << std::endl;
+	std::cout << "Nick Name: " << this->_nickName << std::endl;
+	std::cout << "Phone Number: " << this->_number << std::endl;
+	std::cout << "Darkest Secret: " << this->_secret << std::endl;
 	std::cout << std::endl;
 
 }

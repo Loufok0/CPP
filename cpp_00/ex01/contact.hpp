@@ -10,7 +10,14 @@
 class Contact
 {
 	private:
-		;
+	void	setSecret(std::string	str);
+	void	setNumber(std::string	str);
+	void	setNickName(std::string	str);
+	void	setLastName(std::string str);
+	void	setFirstName(std::string	str);
+	void	printContact(void);
+	void	showContact(void);
+	void	printInfo(std::string str, int len);
 	public:
 		std::string		_firstName;
 		std::string		_lastName;
@@ -22,13 +29,7 @@ class Contact
 		Contact(void);
 		~Contact(void);
 
-	void	setSecret(std::string	str);
-	void	setNumber(std::string	str);
-	void	setNickName(std::string	str);
-	void	setLastName(std::string str);
-	void	setFirstName(std::string	str);
-	void	printContact(void);
-	void	printInfo(std::string str, int len);
+
 };
 
 #endif
