@@ -6,17 +6,17 @@ int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
 
-void	Account::Account(int initialDeposit)
+Account::Account(int initialDeposit)
 {
-	this->index = _nbAccount;
-	_nbAccount++;
+	this->_accountIndex = _nbAccounts;
+	_nbAccounts++;
 	this->_amount = initialDeposit;
 	_totalAmount += initialDeposit;
 	this->_accountIndex = initialDeposit;
 	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";created" << std::endl;
 }
 
-void	Account::~Account(void)
+Account::~Account(void)
 {
 	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";closed" << std::endl;
 }
