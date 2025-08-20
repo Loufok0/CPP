@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <string>
+#include <sstream>
 
 class	 Zombie
 {
@@ -8,13 +10,13 @@ class	 Zombie
 
 	public:
 
-		Zombie(std::string name);
+		Zombie(void);
 		~Zombie(void);
 
 		void			announce (void);
 		std::string		getName (void);
+		void			setName (std::string);
 
 };
 
-Zombie* newZombie (std::string name);
-void randomChump(std::string name);
+Zombie* zombieHorde(int N, std::string name);

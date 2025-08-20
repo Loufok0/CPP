@@ -5,8 +5,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS =	$(NAME).cpp \
 		main.cpp \
-		newZombie.cpp \
-		randomChump.cpp
+		zombieHorde.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
