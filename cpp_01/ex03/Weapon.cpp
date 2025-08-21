@@ -1,7 +1,18 @@
 #include "Weapon.hpp"
 
+Weapon::Weapon(std::string type)
+{
+	_type = type;
+}
 
-std::string const&	Weapon::getType(void)
+Weapon::~Weapon(void) {}
+
+Weapon::Weapon(const Weapon& another)
+{
+	this->_type = another._type;
+}
+
+std::string const&	Weapon::getType(void) const
 {
 	return (_type);
 }

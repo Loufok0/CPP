@@ -19,6 +19,7 @@ class PhoneBook
 		void	addContact(void);
 		void	saveContact(Contact &Current);
 		void	showContacts(void);
+		std::string	loop(std::string ask);
 };
 
 #endif

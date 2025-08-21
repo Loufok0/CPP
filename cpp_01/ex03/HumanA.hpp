@@ -1,4 +1,18 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include <sstream>
+#include "Weapon.hpp"
+
+class HumanA
+{
+
+	private:
+
+		std::string _name;
+		Weapon 	_weapon;
+
+	public:
+
+		HumanA (std::string name, Weapon weapon);
+		~HumanA (void);
+		void	attack(void) const;
+		void	setWeapon(Weapon weapon);
+};

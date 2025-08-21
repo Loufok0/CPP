@@ -1,5 +1,5 @@
-
 #include "phonebook.hpp"
+#include <sstream>
 
 PhoneBook::PhoneBook()
 {
@@ -87,69 +87,53 @@ void	PhoneBook::saveContact(Contact &Current)
 		this->_contacts[this->_countacts++] = Current;
 }
 
+std::string	PhoneBook::loop(std::string ask)
+{
+	std::string		str;
+
+	std::cout << "\033c";
+	std::cout << "Enter the " << ask << " of the new contact : ";
+	std::getline(std::cin, str);
+	while (str.length() == 0)
+	{
+		std::cout << "String not accepted..." << std::endl;
+		std::getline(std::cin, str);
+		std::cout << "\033[F\033[F";
+	}
+	return (str);
+}
+
 void	PhoneBook::addContact(void)
 {
 	Contact Current;
-	std::string		str;
+	std::string str;
+	int	num;
 
 	std::cout << "\033c";
 	std::cout << "Adding contact" << std::endl << std::endl;
 	sleep(0.5);
-	std::cout << "\033c";
 
-	std::cout << "Enter the first name of the new contact : ";
-	std::getline(std::cin, str);
-	while (str.length() == 0)
-	{
-		std::cout << "String not accepted..." << std::endl;
-		std::getline(std::cin, str);
-		std::cout << "\033[F\033[F";
-	}
-	Current.setFirstName(str);
-
-	std::cout << "\033c";
-	std::cout << "Enter the last name of the new contact : ";
-	std::getline(std::cin, str);
-	while (str.length() == 0)
-	{
-		std::cout << "String not accepted..." << std::endl;
-		std::getline(std::cin, str);
-		std::cout << "\033[F\033[F";
-	}
-	Current.setLastName(str);
-
-	std::cout << "\033c";
-	std::cout << "Enter the nick name of the new contact : ";
-	std::getline(std::cin, str);
-	while (str.length() == 0)
-	{
-		std::cout << "String not accepted..." << std::endl;
-		std::getline(std::cin, str);
-		std::cout << "\033[F\033[F";
-	}
-	Current.setNickName(str);
+	Current.setFirstName(loop("first name"));
+	Current.setLastName(loop("last name"));
+	Current.setNickName(loop("nickname"));
 
 	std::cout << "\033c";
 	std::cout << "Enter the phone number of the new contact : ";
+
 	std::getline(std::cin, str);
-	while (str.length() == 0)
+	std::istringstream	ss(str);
+	ss >> num;
+	while (str.length() == 0 || ! num)
 	{
-		std::cout << "String not accepted..." << std::endl;
+		std::cout << "Number not accepted..." << std::endl;
 		std::getline(std::cin, str);
+		std::istringstream	ss(str);
+		ss >> num;
+		std::cout << ss << num;
 		std::cout << "\033[F\033[F";
 	}
 	Current.setNumber(str);
-
-	std::cout << "\033c";
-	std::cout << "Enter the Darkest Secret of the new contact : ";
-	std::getline(std::cin, str);
-	while (str.length() == 0)
-	{
-		std::cout << "String not accepted..." << std::endl;
-		std::getline(std::cin, str);
-		std::cout << "\033[F\033[F";
-	}
-	Current.setSecret(str);
+	Current.setSecret(loop("darkest secret"));
 
 	PhoneBook::saveContact(Current);
 	std::cout << "\033c";
