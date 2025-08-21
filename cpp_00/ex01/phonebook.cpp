@@ -177,7 +177,7 @@ int	main()
 			continue;
 		}
 		else if (str == "EXIT" || str == "exit")
-			continue;
+			break;
 		else
 			std::cout << "Error, command found!" << std::endl;
 		sleep(1);
