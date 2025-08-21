@@ -8,21 +8,16 @@ SRCS =	main.cpp \
 		HumanB.cpp \
 		Weapon.cpp
 
-OBJS = $(SRCS:.cpp=.o)
-
 RM = rm -f
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(OBJS) $(CXXFLAGS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $(NAME)
 	@echo "$(NAME) compiled!"
 
-%.o: %.cpp
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
-
 clean:
-	$(RM) $(OBJS)
+	$(RM) .tmp
 
 fclean: clean
 	$(RM) $(NAME)
