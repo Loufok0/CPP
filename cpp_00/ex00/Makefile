@@ -24,5 +24,7 @@ clean:
 fclean:
 	$(RM) $(OBJS) $(NAME)
 
-re: fclean all
+re:
+	@make fclean
+	@make all
 

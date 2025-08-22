@@ -17,10 +17,11 @@ $(NAME): $(OBJS)
 	@echo "$(NAME) compiled!"
 
 clean:
-	$(RM) .tmp
 
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re:
+	@make fclean
+	@make all
 
