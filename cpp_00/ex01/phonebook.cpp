@@ -29,9 +29,7 @@ void	PhoneBook::showContacts()
 	if (this->_countacts == 0)
 	{
 		std::cout << "No contacts for the moment! " << std::endl << std::endl;
-		sleep(1.5);
-		std::cout << "\033c";
-		std::cout << "Enter a command!" << std::endl;
+		sleep(1);
 		return ;
 	}
 
@@ -54,21 +52,15 @@ void	PhoneBook::showContacts()
 
 
 	std::string	str = "hello there";
-	int			n = 111;
 
 	std::cout << "Wich contact (index) do you want to print ?" << std::endl;
-	std::getline(std::cin, str);
-	n = std::atoi(str.c_str());
-	while (!isNumber(str) || n < 0 || n > this->_countacts - 1)
+
+	while (std::getline(std::cin, str) && !(isNumber(str) && (std::atoi(str.c_str()) >= 0 && std::atoi(str.c_str()) <= this->_countacts - 1) && this->_contacts[std::atoi(str.c_str())].showContact()))
 	{
 		std::cout << "\033[F\033[F\033[F";
 		std::cout << "Error: Enter a number from 0 to " << this->_countacts - 1 << std::endl;
 		std::cout << "Wich contact (index) do you want to print ?" << std::endl;
-		std::getline(std::cin, str);
-		n = std::atoi(str.c_str());
 	}
-	this->_contacts[n].showContact();
-
 }
 
 void	PhoneBook::saveContact(Contact &Current)
@@ -93,12 +85,11 @@ std::string	PhoneBook::loop(std::string ask)
 
 	std::cout << "\033c";
 	std::cout << "Enter the " << ask << " of the new contact : ";
-	std::getline(std::cin, str);
-	while (str.length() == 0)
+	while (std::getline(std::cin, str) && str.length() == 0)
 	{
+		std::cout << "\033c";
 		std::cout << "String not accepted..." << std::endl;
-		std::getline(std::cin, str);
-		std::cout << "\033[F\033[F";
+		std::cout << "Enter the " << ask << " of the new contact : ";
 	}
 	return (str);
 }
@@ -117,20 +108,18 @@ void	PhoneBook::addContact(void)
 	Current.setLastName(loop("last name"));
 	Current.setNickName(loop("nickname"));
 
+
 	std::cout << "\033c";
 	std::cout << "Enter the phone number of the new contact : ";
-
-	std::getline(std::cin, str);
-	std::istringstream	ss(str);
-	ss >> num;
-	while (str.length() == 0 || ! num)
+	while (std::getline(std::cin, str) && !isNumber(str))
 	{
-		std::cout << "Number not accepted..." << std::endl;
-		std::getline(std::cin, str);
 		std::istringstream	ss(str);
 		ss >> num;
-		std::cout << ss << num;
-		std::cout << "\033[F\033[F";
+		if (num)
+			break;
+		std::cout << "\033c";
+		std::cout << "Number not accepted..." << std::endl;
+		std::cout << "Enter the phone number of the new contact : ";
 	}
 	Current.setNumber(str);
 	Current.setSecret(loop("darkest secret"));
@@ -160,9 +149,8 @@ int	main()
 	PhoneBook		phonebook;
 
 	entrance();
-	while (str != "EXIT" || str != "exit")
+	while (std::getline(std::cin, str))
 	{
-		std::getline(std::cin, str);
 		if (str == "ADD" || str == "add")
 		{
 			std::cout << "\033c";

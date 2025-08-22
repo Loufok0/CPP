@@ -12,7 +12,7 @@ int	main(int ac, char **av)
 		i = 0;
 		while (av[n][i])
 		{
-			std::cout << (char)std::toupper(av[n][i]);
+			std::cout << static_cast<unsigned char>(std::toupper(av[n][i]));
 			i++;
 		}
 		n++;

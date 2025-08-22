@@ -30,7 +30,7 @@ class Contact
 		void	setLastName(std::string str);
 		void	setFirstName(std::string	str);
 		void	printContact(void);
-		void	showContact(void);
+		bool	showContact(void);
 		void	printInfo(std::string str, int len);
 };
 

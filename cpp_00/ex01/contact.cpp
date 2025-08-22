@@ -72,7 +72,7 @@ void	Contact::printContact()
 
 }
 
-void	Contact::showContact()
+bool	Contact::showContact()
 {
 	std::cout << "First Name: " << this->_firstName << std::endl;
 	std::cout << "Last Name: " << this->_lastName << std::endl;
@@ -80,7 +80,7 @@ void	Contact::showContact()
 	std::cout << "Phone Number: " << this->_number << std::endl;
 	std::cout << "Darkest Secret: " << this->_secret << std::endl;
 	std::cout << std::endl;
-
+	return (true);
 }
 
 void	Contact::setStatus(bool actif)

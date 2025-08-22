@@ -24,3 +24,5 @@ clean:
 fclean:
 	$(RM) $(OBJS) $(NAME)
 
+re: fclean all
+
