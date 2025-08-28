@@ -1,17 +1,33 @@
 #include "sed.hpp"
 
-void	replace(const char *name, std::string text)
+void	replace(std::string fileName, std::string text, std::string str, std::string rep)
 {
-	std::string fileName = std::string(name) + ".replace";
 	std::ofstream	newFile(fileName.c_str(), std::ios_base::app);
-	newFile << text << std::endl;
+	std::size_t i = 0;
+	if (!str[0])
+	{
+		newFile << text << std::endl;
+		return ;
+	}
+	while (text[i])
+	{
+		std::size_t found = text.find(str, i);
+		if (found == i)
+		{
+			newFile << rep;
+			i += str.length() - 1;
+		}
+		else
+			newFile << text[i];
+		i++;
+	}
+			newFile << std::endl;
 }
 
-
-
-
-void	process(const char *name, std::istream &file)
+void	process(const char *name, std::istream &file, std::string str, std::string rep)
 {
+	std::string		fileName = std::string(name) + ".replace";
+	std::ofstream	no(fileName.c_str());
 	std::string	text;
 
 	while (true)
@@ -26,7 +42,7 @@ void	process(const char *name, std::istream &file)
 			return ;
 		}
 		else
-			replace(name, text);
+			replace(fileName, text, str, rep);
 	}
 }
 
@@ -46,6 +62,6 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		process(av[1], file);
+		process(av[1], file, av[2], av[3]);
 	}
 }
