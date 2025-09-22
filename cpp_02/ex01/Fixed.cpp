@@ -11,6 +11,12 @@ Fixed::Fixed(const int value) : _value(value)
 	std::cout << "Parameterised constructor called" << std::endl;
 }
 
+Fixed::Fixed(const float value) : _value(value)
+{
+	here help me
+	std::cout << "Parameterised constructor called" << std::endl;
+}
+
 Fixed::Fixed(const Fixed &other) : _value(other._value)
 {
 	std::cout << "Copy constructor called" << std::endl;
@@ -40,3 +46,14 @@ void	Fixed::setRawBits (int const raw)
 	std::cout << "setRawBits member function called" << std::endl;
 	_value = raw;
 }
+
+float toFloat (void) const
+{
+	here help me
+}
+
+int toInt (void) const
+{
+	here help me
+}
+
