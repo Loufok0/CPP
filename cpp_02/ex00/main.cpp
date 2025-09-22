@@ -1,12 +1,13 @@
 #include "Fixed.hpp"
 
-int	main (int ac, char **av)
+int	main (void)
 {
 	Fixed a;
 	Fixed b(a);
-
 	Fixed c;
+
 	c = b;
+	c = Fixed(9);
 
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
