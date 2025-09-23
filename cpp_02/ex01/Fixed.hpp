@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
@@ -22,6 +23,7 @@ class Fixed
 
 		float toFloat (void) const;
 		int toInt (void) const;
+		Fixed &operator<<(std::ostream &os);
 
 
 And add the following function to the Fixed class files:

@@ -47,6 +47,8 @@ void	Fixed::setRawBits (int const raw)
 	_value = raw;
 }
 
+
+
 float toFloat (void) const
 {
 	here help me
@@ -57,3 +59,7 @@ int toInt (void) const
 	here help me
 }
 
+void	Fixed::operator<<(std::ostream &os)
+{
+	os << _value;
+}
