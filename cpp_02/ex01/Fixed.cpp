@@ -6,15 +6,16 @@ Fixed::Fixed() : _value(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int value) : _value(value)
+Fixed::Fixed(const int value)
 {
 	std::cout << "Parameterised constructor called" << std::endl;
+	_value = value;
 }
 
-Fixed::Fixed(const float value) : _value(value)
+Fixed::Fixed(const float value)
 {
-	here help me
 	std::cout << "Parameterised constructor called" << std::endl;
+	_value = (value * (1 << _width));
 }
 
 Fixed::Fixed(const Fixed &other) : _value(other._value)
@@ -49,17 +50,19 @@ void	Fixed::setRawBits (int const raw)
 
 
 
-float toFloat (void) const
+float Fixed::toFloat (void) const
 {
-	here help me
+	return (static_cast<float>(_value) / (1 << _width));
 }
 
-int toInt (void) const
+int Fixed::toInt (void) const
 {
-	here help me
+	// here help me
+	return ((_value / (1 << _width)));
 }
 
-void	Fixed::operator<<(std::ostream &os)
+std::ostream&	operator << (std::ostream &os, const Fixed& f)
 {
-	os << _value;
+	os << (f.toFloat());
+	return (os);
 }
