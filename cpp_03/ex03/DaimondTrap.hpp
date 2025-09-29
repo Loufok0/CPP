@@ -2,17 +2,18 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap
+class DaimondTrap: public ClapTrap
 {
 	public:
 
-		ScavTrap();
-		ScavTrap(const char *name);
-		ScavTrap(const ClapTrap &other);
-		~ScavTrap();
+		DaimondTrap();
+		DaimondTrap(const char *name);
+		DaimondTrap(const ClapTrap &other);
+		~DaimondTrap();
 		void	attack(const std::string& target);
 		void	beRepaired(unsigned int amount);
 		void	takeDamage(unsigned int amount);
 
 		void guardGate(void) const;
+		void highFivesGuys(void) const;
 };

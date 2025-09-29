@@ -2,17 +2,17 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap
+class FragTrap: public ClapTrap
 {
 	public:
 
-		ScavTrap();
-		ScavTrap(const char *name);
-		ScavTrap(const ClapTrap &other);
-		~ScavTrap();
+		FragTrap();
+		FragTrap(const char *name);
+		FragTrap(const ClapTrap &other);
+		~FragTrap();
 		void	attack(const std::string& target);
 		void	beRepaired(unsigned int amount);
 		void	takeDamage(unsigned int amount);
 
-		void guardGate(void) const;
+		void highFivesGuys(void) const;
 };

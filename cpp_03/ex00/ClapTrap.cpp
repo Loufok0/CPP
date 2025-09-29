@@ -21,10 +21,13 @@ ClapTrap::ClapTrap(const ClapTrap &other) : _name(other._name), _hitPoint(10), _
 
 ClapTrap& ClapTrap::operator = (const ClapTrap &other)
 {
-	_name = other._name;
-	_hitPoint = 10;
-	_energyPoint = 10;
-	_attackDamage = 10;
+	if (this != &other)
+	{
+		_name = other._name;
+		_hitPoint = 10;
+		_energyPoint = 10;
+		_attackDamage = 10;
+	}
 	return (*this);
 }
 

@@ -34,4 +34,3 @@ class ClapTrap
 		int getAtt() const {return (_attackDamage);};
 
 };
-
