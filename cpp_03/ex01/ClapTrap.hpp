@@ -25,8 +25,12 @@ class ClapTrap
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
+		const char* getName() const {return (_name);};
+		void setEp(const int n) {this->_energyPoint = n;};
+		int getEp() const {return (_energyPoint);};
+		void setHp(const int n) {this->_hitPoint = n;};
 		int getHp(void) const {return (_hitPoint);};
-
+		int getAtt() const {return (_attackDamage);};
 
 };
 
