@@ -9,7 +9,7 @@ Fixed::Fixed() : _value(0)
 Fixed::Fixed(const int value)
 {
 	std::cout << "Parameterised constructor called" << std::endl;
-	_value = value;
+	_value = (value * (1 << _width));
 }
 
 Fixed::Fixed(const float value)
