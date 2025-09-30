@@ -5,15 +5,14 @@ FragTrap::FragTrap() : ClapTrap::ClapTrap()
 {
 	setHp(100);
 	setEp(100);
-	setAtt(30);
+	setAtt(20);
 	std::cout << "Constructer called, FragTrap " << getName() << " built" << std::endl;
 }
 
-FragTrap::FragTrap(const char *name) : ClapTrap::ClapTrap(name)
+FragTrap::FragTrap(const std::string name) : ClapTrap::ClapTrap(name)
 {
-	setHp(100);
 	setEp(100);
-	setAtt(30);
+	setAtt(20);
 	std::cout << "Constructer called, FragTrap " << getName() << " built" << std::endl;
 }
 
@@ -21,13 +20,13 @@ FragTrap::FragTrap(const ClapTrap &other) : ClapTrap::ClapTrap(other)
 {
 	setHp(100);
 	setEp(100);
-	setAtt(30);
+	setAtt(20);
 	std::cout << "Constructer called, FragTrap " << getName() << " built" << std::endl;
 }
 
 FragTrap::~FragTrap()
 {
-	std::cout << std::endl << std::endl << "Destructer called, FragTrap " << getName() << " annihilated" << std::endl;
+	std::cout << "Destructer called, FragTrap " << getName() << " annihilated" << std::endl;
 }
 
 void	FragTrap::attack(const std::string& target)

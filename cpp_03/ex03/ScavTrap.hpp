@@ -2,12 +2,12 @@
 
 #include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap
+class ScavTrap: virtual public ClapTrap
 {
 	public:
 
 		ScavTrap();
-		ScavTrap(const char *name);
+		ScavTrap(const std::string name);
 		ScavTrap(const ClapTrap &other);
 		~ScavTrap();
 		void	attack(const std::string& target);

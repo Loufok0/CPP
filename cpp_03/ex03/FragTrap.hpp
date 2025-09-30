@@ -2,12 +2,12 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap: public ClapTrap
+class FragTrap: virtual public ClapTrap
 {
 	public:
 
 		FragTrap();
-		FragTrap(const char *name);
+		FragTrap(const std::string name);
 		FragTrap(const ClapTrap &other);
 		~FragTrap();
 		void	attack(const std::string& target);

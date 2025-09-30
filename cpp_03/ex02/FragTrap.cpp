@@ -53,6 +53,7 @@ void	FragTrap::takeDamage(unsigned int amount)
 	setHp(getHp() - amount);
 }
 
+
 void FragTrap::highFivesGuys(void) const
 {
 	const char* phrases[] = {

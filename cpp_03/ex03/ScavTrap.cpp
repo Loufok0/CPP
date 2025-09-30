@@ -9,7 +9,7 @@ ScavTrap::ScavTrap() : ClapTrap::ClapTrap()
 	std::cout << "Constructer called, ScavTrap " << getName() << " built" << std::endl;
 }
 
-ScavTrap::ScavTrap(const char *name) : ClapTrap::ClapTrap(name)
+ScavTrap::ScavTrap(const std::string name) : ClapTrap::ClapTrap(name)
 {
 	setHp(100);
 	setEp(50);
@@ -27,7 +27,7 @@ ScavTrap::ScavTrap(const ClapTrap &other) : ClapTrap::ClapTrap(other)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << std::endl << std::endl << "Destructer called, ScavTrap " << getName() << " annihilated" << std::endl;
+	std::cout << "Destructer called, ScavTrap " << getName() << " annihilated" << std::endl;
 }
 
 void	ScavTrap::attack(const std::string& target)

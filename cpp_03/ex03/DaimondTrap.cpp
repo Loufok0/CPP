@@ -1,42 +1,40 @@
 #include "DaimondTrap.hpp"
 
 
-DaimondTrap::DaimondTrap() : ClapTrap::ClapTrap()
+DaimondTrap::DaimondTrap() : ClapTrap(), ScavTrap(), FragTrap(), _name("NoName")
 {
-	setHp(100);
-	setEp(50);
-	setAtt(20);
+	setHp(FragTrap::getHp());
+	setEp(ScavTrap::getEp());
+	setAtt(FragTrap::getAtt());
 	std::cout << "Constructer called, DaimondTrap " << getName() << " built" << std::endl;
 }
 
-DaimondTrap::DaimondTrap(const char *name) : ClapTrap::ClapTrap(name)
+DaimondTrap::DaimondTrap(const std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name + "_clap_name"), FragTrap(name + "_clap_name"), _name(name)
 {
-	setHp(100);
-	setEp(50);
-	setAtt(20);
+	setHp(FragTrap::getHp());
+	setEp(ScavTrap::getEp());
+	setAtt(FragTrap::getAtt());
 	std::cout << "Constructer called, DaimondTrap " << getName() << " built" << std::endl;
 }
 
-DaimondTrap::DaimondTrap(const ClapTrap &other) : ClapTrap::ClapTrap(other)
+DaimondTrap::DaimondTrap(const DaimondTrap &other) : ClapTrap::ClapTrap(other), ScavTrap(other), FragTrap(other), _name(other._name)
 {
-	setHp(100);
-	setEp(50);
-	setAtt(20);
+	setHp(FragTrap::getHp());
+	setEp(ScavTrap::getEp());
+	setAtt(FragTrap::getAtt());
 	std::cout << "Constructer called, DaimondTrap " << getName() << " built" << std::endl;
 }
 
 DaimondTrap::~DaimondTrap()
 {
-	std::cout << std::endl << std::endl << "Destructer called, DaimondTrap " << getName() << " annihilated" << std::endl;
+	std::cout << "Destructer called, DaimondTrap " << getName() << " annihilated" << std::endl;
 }
 
-void	DaimondTrap::attack(const std::string& target)
+void DaimondTrap::attack(const std::string& target)
 {
-	if (getEp() <= 0)
-		return ;
-	std::cout << "DaimondTrap " << getName() << " attacks " << target << ", causing " << getAtt() << " points of damage!" << std::endl;
-	setEp(getEp() - 1);
+	ScavTrap::attack(target);
 }
+
 
 void	DaimondTrap::beRepaired(unsigned int amount)
 {
@@ -53,25 +51,7 @@ void	DaimondTrap::takeDamage(unsigned int amount)
 	setHp(getHp() - amount);
 }
 
-void DaimondTrap::guardGate(void) const
+void	DaimondTrap::whoAmI(void)
 {
-	std::cout << "DaimondTrap " << getName() << " is now in Gate keeper mode." << std::endl;
-}
-
-void DaimondTrap::highFivesGuys(void) const
-{
-	const char* phrases[] = {
-	"Secret handshake!",
-	"Up top!",
-	"Gimme five!",
-	"High five!",
-	"Up top!"
-	};
-
-	int nb_phrases = sizeof(phrases) / sizeof(phrases[0]);
-
-	std::srand(std::time(0));
-	int index = std::rand() % nb_phrases;
-
-	std::cout << "DaimondTrap request a high fives: \"" << phrases[index] << "\"" << std::endl << std::endl << std::endl ;
+	 std::cout << "Hi, my name is " << getName() << " (ClapTrap name)" << " but you can call me " << _name << " (DaimondTrap name)" << std::endl << std::endl;
 }
