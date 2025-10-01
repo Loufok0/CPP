@@ -1,7 +1,7 @@
 #include "Zombie.hpp"
 
 
-Zombie::Zombie(std::string name) {_name = name;}
+Zombie::Zombie(std::string name) : _name(name) {}
 
 Zombie::~Zombie(void)
 {
@@ -13,7 +13,6 @@ std::string	Zombie::getName (void)
 {
 	return (_name);
 }
-
 
 void		Zombie::announce (void)
 {

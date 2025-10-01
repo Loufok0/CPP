@@ -1,6 +1,9 @@
 
-remove all friends keywords
+remove all friends and using keywords
 
 ckeck leaks
 
 in ./cpp_03/ex01/ : why is there so much endl in the ouput ???
+
+Any function implementation put in a header file (except for function templates)
+means 0 to the exercise.

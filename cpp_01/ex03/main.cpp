@@ -16,9 +16,7 @@ int main()
 		HumanB jim("Jim");
 		jim.setWeapon(club);
 		jim.attack();
-		// std::cout << "before:" << std::endl << club.getType() << std::endl;
 		club.setType("some other type of club");
-		// std::cout << "after:" << std::endl << club.getType() << std::endl;
 		jim.attack();
 	}
 	return 0;
