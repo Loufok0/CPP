@@ -7,6 +7,7 @@
 class Harl
 {
 	private:
+
 		void	debug( void );
 		void	info( void );
 		void	warning( void );
@@ -15,7 +16,8 @@ class Harl
 		void (Harl::*_f[NBLEVEL])(void);
 
 	public:
+
 		Harl (void);
 		~Harl (void);
-		void	complain( std::string level );
+		void	complain(std::string level);
 };

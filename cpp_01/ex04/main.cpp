@@ -21,13 +21,13 @@ void	replace(std::string fileName, std::string text, std::string str, std::strin
 			newFile << text[i];
 		i++;
 	}
-			newFile << std::endl;
+	newFile << std::endl;
 }
 
 void	process(const char *name, std::istream &file, std::string str, std::string rep)
 {
 	std::string		fileName = std::string(name) + ".replace";
-	std::ofstream	no(fileName.c_str());
+	std::ofstream	trunckingFile(fileName.c_str());
 	std::string	text;
 
 	while (true)
@@ -61,7 +61,6 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	else
-	{
 		process(av[1], file, av[2], av[3]);
-	}
+	return (0);
 }
