@@ -70,35 +70,36 @@ std::ostream&	operator << (std::ostream &os, const Fixed& f)
 
 
 
-bool	Fixed::operator < (const Fixed& f2)
+bool	Fixed::operator < (const Fixed& f2) const
 {
 	return (this->toFloat() < f2.toFloat());
 }
 
-bool	Fixed::operator > (const Fixed& f2)
+bool	Fixed::operator > (const Fixed& f2) const
 {
 	return (this->toFloat() > f2.toFloat());
 }
 
-bool	Fixed::operator <= (const Fixed& f2)
+bool	Fixed::operator <= (const Fixed& f2) const
 {
 	return (this->toFloat() <= f2.toFloat());
 }
 
-bool	Fixed::operator >= (const Fixed& f2)
+bool	Fixed::operator >= (const Fixed& f2) const
 {
 	return (this->toFloat() >= f2.toFloat());
 }
 
-bool	Fixed::operator == (const Fixed& f2)
+bool	Fixed::operator == (const Fixed& f2) const
 {
 	return (this->toFloat() == f2.toFloat());
 }
 
-bool	Fixed::operator != (const Fixed& f2)
+bool	Fixed::operator != (const Fixed& f2) const
 {
 	return (this->toFloat() != f2.toFloat());
 }
+
 
 float	operator + (const Fixed& f1, const Fixed& f2)
 {
@@ -117,10 +118,11 @@ float	operator * (const Fixed& f1, const Fixed& f2)
  
 float	operator / (const Fixed& f1, const Fixed& f2)
 {
-	if (f2._value == 0)
+	if (f2.getRawBits() == 0)
 		return (NAN);
 	return (f1.toFloat() / f2.toFloat());
 }
+
 
 Fixed&	Fixed::operator ++ ()
 {

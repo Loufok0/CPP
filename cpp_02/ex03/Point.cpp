@@ -30,7 +30,7 @@ Point::~Point()
 
 std::ostream&	operator << (std::ostream &os, const Point& p)
 {
-	os << "x: " << p._x.toFloat() << "\t" << "y: " << p._y.toFloat();
+	os << "x: " << p.getX() << "\t" << "y: " << p.getY();
 	return (os);
 }
 

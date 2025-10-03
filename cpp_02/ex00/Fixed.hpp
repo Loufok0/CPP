@@ -11,7 +11,6 @@ class Fixed
 	public:
 
 		Fixed();
-		Fixed(const int value);
 		Fixed(const Fixed &other);
 		Fixed &operator=(const Fixed &other);
 		~Fixed();

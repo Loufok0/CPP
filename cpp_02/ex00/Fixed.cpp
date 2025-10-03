@@ -6,11 +6,6 @@ Fixed::Fixed() : _value(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int value) : _value(value)
-{
-	std::cout << "Parameterised constructor called" << std::endl;
-}
-
 Fixed::Fixed(const Fixed &other) : _value(other._value)
 {
 	std::cout << "Copy constructor called" << std::endl;

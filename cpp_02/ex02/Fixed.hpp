@@ -23,18 +23,13 @@ class Fixed
 
 		float toFloat (void) const;
 		int toInt (void) const;
-		friend std::ostream& operator<<(std::ostream &os, const Fixed& f);
 
-		bool	operator > (const Fixed& f2);
-		bool	operator < (const Fixed& f2);
-		bool	operator >= (const Fixed& f2);
-		bool	operator <= (const Fixed& f2);
-		bool	operator == (const Fixed& f2);
-		bool	operator != (const Fixed& f2);
-		friend	float	operator + (const Fixed& f1, const Fixed& f2);
-		friend	float	operator - (const Fixed& f1, const Fixed& f2);
-		friend	float	operator * (const Fixed& f1, const Fixed& f2);
-		friend	float	operator / (const Fixed& f1, const Fixed& f2);
+		bool	operator > (const Fixed& f2) const;
+		bool	operator < (const Fixed& f2) const;
+		bool	operator >= (const Fixed& f2) const;
+		bool	operator <= (const Fixed& f2) const;
+		bool	operator == (const Fixed& f2) const;
+		bool	operator != (const Fixed& f2) const;
 		Fixed	operator ++ (int);
 		Fixed	operator -- (int);
 		Fixed&	operator ++ (void);
@@ -44,3 +39,11 @@ class Fixed
 		static Fixed	max (Fixed &f1, Fixed &f2);
 		static Fixed	max (const Fixed &f1, const Fixed &f2);
 };
+
+
+	std::ostream& operator<<(std::ostream &os, const Fixed& f);
+
+	float	operator + (const Fixed& f1, const Fixed& f2);
+	float	operator - (const Fixed& f1, const Fixed& f2);
+	float	operator * (const Fixed& f1, const Fixed& f2);
+	float	operator / (const Fixed& f1, const Fixed& f2);

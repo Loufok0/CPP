@@ -7,7 +7,7 @@ int main( void ) {
 	Point b(3, 1);
 	Point c(4, 4);
 	
-	Point p(2, 3.5); // p appartient a [ab] et [pa] = [pb]
+	Point p(2, 3.5); // ici p appartient a [ab] et [pa] = [pb]
 
 	bool inTriangle = bsp(a, b, c, p);
 	std::cout << "is " << p << " in the triangle abc with: " << std::endl;
