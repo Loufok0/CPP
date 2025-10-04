@@ -25,6 +25,18 @@ FragTrap::FragTrap(const ClapTrap &other) : ClapTrap::ClapTrap(other)
 	std::cout << "Constructer called, FragTrap " << getName() << " built" << std::endl;
 }
 
+FragTrap& FragTrap::operator = (const FragTrap &other)
+{
+	if (this != &other)
+	{
+		this->setName(other.getName());
+		this->setHp(other.getHp());
+		this->setEp(other.getEp());
+		this->setAtt(other.getAtt());
+	}
+	return (*this);
+}
+
 FragTrap::~FragTrap()
 {
 	std::cout << std::endl << std::endl << "Destructer called, FragTrap " << getName() << " annihilated" << std::endl;

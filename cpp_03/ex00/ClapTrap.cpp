@@ -1,19 +1,18 @@
 #include "ClapTrap.hpp"
 
-
-ClapTrap::ClapTrap() : _name("NoName"), _hitPoint(10), _energyPoint(10), _attackDamage(10)
+ClapTrap::ClapTrap() : _name("NoName"), _hitPoint(10), _energyPoint(10), _attackDamage(0)
 {
 	std::cout << "Constructer called, ClapTrap " << _name << " firsts words:" << std::endl;
 	randQuote('c');
 }
 
-ClapTrap::ClapTrap(const char *name) : _name(name), _hitPoint(10), _energyPoint(10), _attackDamage(10)
+ClapTrap::ClapTrap(const std::string name) : _name(name), _hitPoint(10), _energyPoint(10), _attackDamage(0)
 {
 	std::cout << "Constructer called, ClapTrap " << _name << " firsts words:" << std::endl;
 	randQuote('c');
 }
 
-ClapTrap::ClapTrap(const ClapTrap &other) : _name(other._name), _hitPoint(10), _energyPoint(10), _attackDamage(10)
+ClapTrap::ClapTrap(const ClapTrap &other) : _name(other._name), _hitPoint(10), _energyPoint(10), _attackDamage(0)
 {
 	std::cout << "Constructer called, ClapTrap" << _name << "firsts words:" << std::endl;
 	randQuote('c');
@@ -24,9 +23,9 @@ ClapTrap& ClapTrap::operator = (const ClapTrap &other)
 	if (this != &other)
 	{
 		_name = other._name;
-		_hitPoint = 10;
-		_energyPoint = 10;
-		_attackDamage = 10;
+		_hitPoint = other._hitPoint;
+		_energyPoint = other._energyPoint;
+		_attackDamage = other._attackDamage;
 	}
 	return (*this);
 }
@@ -58,6 +57,11 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	std::cout << "ClapTrap " << _name << " has taken " << amount << " points of damage!" << std::endl;
 	_hitPoint -= amount;
+}
+
+int ClapTrap::getHp(void) const
+{
+	return (_hitPoint);
 }
 
 

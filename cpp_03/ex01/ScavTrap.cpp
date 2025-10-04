@@ -9,7 +9,7 @@ ScavTrap::ScavTrap() : ClapTrap::ClapTrap()
 	std::cout << "Constructer called, ScavTrap " << getName() << " built" << std::endl;
 }
 
-ScavTrap::ScavTrap(const char *name) : ClapTrap::ClapTrap(name)
+ScavTrap::ScavTrap(const std::string name) : ClapTrap::ClapTrap(name)
 {
 	setHp(100);
 	setEp(50);
@@ -23,6 +23,18 @@ ScavTrap::ScavTrap(const ClapTrap &other) : ClapTrap::ClapTrap(other)
 	setEp(50);
 	setAtt(20);
 	std::cout << "Constructer called, ScavTrap " << getName() << " built" << std::endl;
+}
+
+ScavTrap& ScavTrap::operator = (const ScavTrap &other)
+{
+	if (this != &other)
+	{
+		this->setName(other.getName());
+		this->setHp(other.getHp());
+		this->setEp(other.getEp());
+		this->setAtt(other.getAtt());
+	}
+	return (*this);
 }
 
 ScavTrap::~ScavTrap()

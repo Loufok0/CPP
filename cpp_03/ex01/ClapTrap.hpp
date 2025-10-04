@@ -8,7 +8,7 @@ class ClapTrap
 {
 	private:
 
-		const char *_name;
+		std::string _name;
 		int _hitPoint;
 		int _energyPoint;
 		int _attackDamage;
@@ -16,7 +16,7 @@ class ClapTrap
 	public:
 
 		ClapTrap();
-		ClapTrap(const char *name);
+		ClapTrap(const std::string name);
 		ClapTrap(const ClapTrap &other);
 		ClapTrap& operator = (const ClapTrap &other);
 		~ClapTrap();
@@ -25,13 +25,14 @@ class ClapTrap
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
-		const char* getName() const {return (_name);};
-		void setEp(const int n) {this->_energyPoint = n;};
-		int getEp() const {return (_energyPoint);};
-		void setHp(const int n) {this->_hitPoint = n;};
-		int getHp(void) const {return (_hitPoint);};
-		void setAtt(const int n) {this->_attackDamage = n;};
-		int getAtt() const {return (_attackDamage);};
 
+		void setName(const std::string n);
+		const std::string getName() const;
+		void setEp(const int n);
+		int getEp() const;
+		void setHp(const int n);
+		int getHp(void) const;
+		void setAtt(const int n);
+		int getAtt() const;
 };
 

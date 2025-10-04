@@ -9,7 +9,9 @@ class FragTrap: public ClapTrap
 		FragTrap();
 		FragTrap(const char *name);
 		FragTrap(const ClapTrap &other);
+		FragTrap& operator = (const FragTrap &other);
 		~FragTrap();
+
 		void	attack(const std::string& target);
 		void	beRepaired(unsigned int amount);
 		void	takeDamage(unsigned int amount);
