@@ -39,7 +39,7 @@ FragTrap& FragTrap::operator = (const FragTrap &other)
 
 FragTrap::~FragTrap()
 {
-	std::cout << std::endl << std::endl << "Destructer called, FragTrap " << getName() << " annihilated" << std::endl;
+	std::cout << "Destructer called, FragTrap " << getName() << " annihilated" << std::endl;
 }
 
 void	FragTrap::attack(const std::string& target)

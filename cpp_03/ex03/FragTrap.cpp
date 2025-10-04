@@ -5,14 +5,15 @@ FragTrap::FragTrap() : ClapTrap::ClapTrap()
 {
 	setHp(100);
 	setEp(100);
-	setAtt(20);
+	setAtt(30);
 	std::cout << "Constructer called, FragTrap " << getName() << " built" << std::endl;
 }
 
-FragTrap::FragTrap(const std::string name) : ClapTrap::ClapTrap(name)
+FragTrap::FragTrap(const char *name) : ClapTrap::ClapTrap(name)
 {
+	setHp(100);
 	setEp(100);
-	setAtt(20);
+	setAtt(30);
 	std::cout << "Constructer called, FragTrap " << getName() << " built" << std::endl;
 }
 
@@ -20,8 +21,20 @@ FragTrap::FragTrap(const ClapTrap &other) : ClapTrap::ClapTrap(other)
 {
 	setHp(100);
 	setEp(100);
-	setAtt(20);
+	setAtt(30);
 	std::cout << "Constructer called, FragTrap " << getName() << " built" << std::endl;
+}
+
+FragTrap& FragTrap::operator = (const FragTrap &other)
+{
+	if (this != &other)
+	{
+		this->setName(other.getName());
+		this->setHp(other.getHp());
+		this->setEp(other.getEp());
+		this->setAtt(other.getAtt());
+	}
+	return (*this);
 }
 
 FragTrap::~FragTrap()
@@ -51,6 +64,7 @@ void	FragTrap::takeDamage(unsigned int amount)
 	std::cout << "FragTrap " << getName() << " has taken " << amount << " points of damage!" << std::endl;
 	setHp(getHp() - amount);
 }
+
 
 void FragTrap::highFivesGuys(void) const
 {

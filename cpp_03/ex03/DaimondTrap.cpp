@@ -25,6 +25,18 @@ DaimondTrap::DaimondTrap(const DaimondTrap &other) : ClapTrap::ClapTrap(other), 
 	std::cout << "Constructer called, DaimondTrap " << getName() << " built" << std::endl;
 }
 
+DaimondTrap& DaimondTrap::operator = (const DaimondTrap &other)
+{
+	if (this != &other)
+	{
+		this->setName(other.getName());
+		this->setHp(other.getHp());
+		this->setEp(other.getEp());
+		this->setAtt(other.getAtt());
+	}
+	return (*this);
+}
+
 DaimondTrap::~DaimondTrap()
 {
 	std::cout << "Destructer called, DaimondTrap " << getName() << " annihilated" << std::endl;

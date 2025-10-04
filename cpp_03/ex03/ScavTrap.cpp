@@ -25,6 +25,18 @@ ScavTrap::ScavTrap(const ClapTrap &other) : ClapTrap::ClapTrap(other)
 	std::cout << "Constructer called, ScavTrap " << getName() << " built" << std::endl;
 }
 
+ScavTrap& ScavTrap::operator = (const ScavTrap &other)
+{
+	if (this != &other)
+	{
+		this->setName(other.getName());
+		this->setHp(other.getHp());
+		this->setEp(other.getEp());
+		this->setAtt(other.getAtt());
+	}
+	return (*this);
+}
+
 ScavTrap::~ScavTrap()
 {
 	std::cout << "Destructer called, ScavTrap " << getName() << " annihilated" << std::endl;
@@ -57,3 +69,4 @@ void ScavTrap::guardGate(void) const
 {
 	std::cout << "ScavTrap " << getName() << " is now in Gate keeper mode." << std::endl;
 }
+

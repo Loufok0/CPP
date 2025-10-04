@@ -15,6 +15,7 @@ class DaimondTrap : public ScavTrap, public FragTrap
 		DaimondTrap();
 		DaimondTrap(const std::string name);
 		DaimondTrap(const DaimondTrap &other);
+		DaimondTrap& operator = (const DaimondTrap &other);
 		~DaimondTrap();
 		void	attack(const std::string& target);
 		void	beRepaired(unsigned int amount);
