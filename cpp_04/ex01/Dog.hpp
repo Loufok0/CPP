@@ -2,8 +2,12 @@
 
 #include "Animal.hpp"
 
-class Dog : virtual public Animal
+class Dog : virtual private Animal
 {
+	private:
+
+		Brain* _brain;
+
 	public:
 
 		Dog();

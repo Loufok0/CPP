@@ -33,3 +33,8 @@ void Animal::makeSound(void) const
 {
 	std::cout << "Oh, I think this Animal is trying to comunicate" << std::endl;
 }
+
+Brain* Animal::getBrain(void) const
+{
+	return (_brain);
+}
