@@ -38,12 +38,12 @@ class Fixed
 		static Fixed	min (const Fixed &f1, const Fixed &f2);
 		static Fixed	max (Fixed &f1, Fixed &f2);
 		static Fixed	max (const Fixed &f1, const Fixed &f2);
+		float	operator + (const Fixed& f2) const;
+		float	operator - (const Fixed& f2) const;
+		float	operator * (const Fixed& f2) const;
+		float	operator / (const Fixed& f2) const;
 };
 
 
 	std::ostream& operator<<(std::ostream &os, const Fixed& f);
 
-	float	operator + (const Fixed& f1, const Fixed& f2);
-	float	operator - (const Fixed& f1, const Fixed& f2);
-	float	operator * (const Fixed& f1, const Fixed& f2);
-	float	operator / (const Fixed& f1, const Fixed& f2);

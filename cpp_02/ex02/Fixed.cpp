@@ -101,26 +101,26 @@ bool	Fixed::operator != (const Fixed& f2) const
 }
 
 
-float	operator + (const Fixed& f1, const Fixed& f2)
+float	Fixed::operator + (const Fixed& f2) const
 {
-	return (f1.toFloat() + f2.toFloat());
+	return (this->toFloat() + f2.toFloat());
 }
 
-float	operator - (const Fixed& f1, const Fixed& f2)
+float	Fixed::operator - (const Fixed& f2) const
 {
-	return (f1.toFloat() - f2.toFloat());
+	return (this->toFloat() - f2.toFloat());
 }
  
-float	operator * (const Fixed& f1, const Fixed& f2)
+float	Fixed::operator * (const Fixed& f2) const
 {
-	return (f1.toFloat() * f2.toFloat());
+	return (this->toFloat() * f2.toFloat());
 }
  
-float	operator / (const Fixed& f1, const Fixed& f2)
+float	Fixed::operator / (const Fixed& f2) const
 {
 	if (f2.getRawBits() == 0)
 		return (NAN);
-	return (f1.toFloat() / f2.toFloat());
+	return (this->toFloat() / f2.toFloat());
 }
 
 

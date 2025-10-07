@@ -12,8 +12,8 @@ RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CXX) $(OBJS) $(CXXFLAGS) -o $(NAME)
+$(NAME):
+	$(CXX) $(SRCS) $(CXXFLAGS) -o $(NAME)
 	@echo "$(NAME) compiled!"
 
 %.o: %.cpp
