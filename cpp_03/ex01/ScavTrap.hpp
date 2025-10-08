@@ -16,5 +16,5 @@ class ScavTrap: public ClapTrap
 		void	beRepaired(unsigned int amount);
 		void	takeDamage(unsigned int amount);
 
-		void guardGate(void) const;
+		void	guardGate(void) const;
 };
