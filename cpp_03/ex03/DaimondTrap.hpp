@@ -18,8 +18,8 @@ class DaimondTrap : public ScavTrap, public FragTrap
 		DaimondTrap& operator = (const DaimondTrap &other);
 		~DaimondTrap();
 		void	attack(const std::string& target);
-		void	beRepaired(unsigned int amount);
-		void	takeDamage(unsigned int amount);
+		// void	beRepaired(unsigned int amount);
+		// void	takeDamage(unsigned int amount);
 
 		void	whoAmI(void);
 };

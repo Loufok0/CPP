@@ -50,20 +50,20 @@ void	ScavTrap::attack(const std::string& target)
 	setEp(getEp() - 1);
 }
 
-void	ScavTrap::beRepaired(unsigned int amount)
-{
-	if (getEp() <= 0)
-		return ;
-	std::cout << getName() << " repairs " << amount << " hit points" << std::endl;
-	setEp(getEp() - 1);
-	setHp(getHp() + amount);
-}
-
-void	ScavTrap::takeDamage(unsigned int amount)
-{
-	std::cout << "ScavTrap " << getName() << " has taken " << amount << " points of damage!" << std::endl;
-	setHp(getHp() - amount);
-}
+//void	ScavTrap::beRepaired(unsigned int amount)
+//{
+//	if (getEp() <= 0)
+//		return ;
+//	std::cout << getName() << " repairs " << amount << " hit points" << std::endl;
+//	setEp(getEp() - 1);
+//	setHp(getHp() + amount);
+//}
+//
+//void	ScavTrap::takeDamage(unsigned int amount)
+//{
+//	std::cout << "ScavTrap " << getName() << " has taken " << amount << " points of damage!" << std::endl;
+//	setHp(getHp() - amount);
+//}
 
 void ScavTrap::guardGate(void) const
 {

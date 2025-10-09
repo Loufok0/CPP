@@ -48,20 +48,20 @@ void DaimondTrap::attack(const std::string& target)
 }
 
 
-void	DaimondTrap::beRepaired(unsigned int amount)
-{
-	if (getEp() <= 0)
-		return ;
-	std::cout << getName() << " repairs " << amount << " hit points" << std::endl;
-	setEp(getEp() - 1);
-	setHp(getHp() + amount);
-}
-
-void	DaimondTrap::takeDamage(unsigned int amount)
-{
-	std::cout << "DaimondTrap " << getName() << " has taken " << amount << " points of damage!" << std::endl;
-	setHp(getHp() - amount);
-}
+//void	DaimondTrap::beRepaired(unsigned int amount)
+//{
+//	if (getEp() <= 0)
+//		return ;
+//	std::cout << getName() << " repairs " << amount << " hit points" << std::endl;
+//	setEp(getEp() - 1);
+//	setHp(getHp() + amount);
+//}
+//
+//void	DaimondTrap::takeDamage(unsigned int amount)
+//{
+//	std::cout << "DaimondTrap " << getName() << " has taken " << amount << " points of damage!" << std::endl;
+//	setHp(getHp() - amount);
+//}
 
 void	DaimondTrap::whoAmI(void)
 {

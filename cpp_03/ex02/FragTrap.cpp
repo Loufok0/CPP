@@ -9,7 +9,7 @@ FragTrap::FragTrap() : ClapTrap::ClapTrap()
 	std::cout << "Constructer called, FragTrap " << getName() << " built" << std::endl;
 }
 
-FragTrap::FragTrap(const char *name) : ClapTrap::ClapTrap(name)
+FragTrap::FragTrap(const std::string name) : ClapTrap::ClapTrap(name)
 {
 	setHp(100);
 	setEp(100);
@@ -50,20 +50,20 @@ void	FragTrap::attack(const std::string& target)
 	setEp(getEp() - 1);
 }
 
-void	FragTrap::beRepaired(unsigned int amount)
-{
-	if (getEp() <= 0)
-		return ;
-	std::cout << getName() << " repairs " << amount << " hit points" << std::endl;
-	setEp(getEp() - 1);
-	setHp(getHp() + amount);
-}
-
-void	FragTrap::takeDamage(unsigned int amount)
-{
-	std::cout << "FragTrap " << getName() << " has taken " << amount << " points of damage!" << std::endl;
-	setHp(getHp() - amount);
-}
+//void	FragTrap::beRepaired(unsigned int amount)
+//{
+//	if (getEp() <= 0)
+//		return ;
+//	std::cout << getName() << " repairs " << amount << " hit points" << std::endl;
+//	setEp(getEp() - 1);
+//	setHp(getHp() + amount);
+//}
+//
+//void	FragTrap::takeDamage(unsigned int amount)
+//{
+//	std::cout << "FragTrap " << getName() << " has taken " << amount << " points of damage!" << std::endl;
+//	setHp(getHp() - amount);
+//}
 
 
 void FragTrap::highFivesGuys(void) const

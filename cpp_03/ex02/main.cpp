@@ -4,9 +4,10 @@
 int main(void)
 {
 	std::string oponnent = "Tesla";
-	FragTrap C("Newton");
+	std::string name = "Newton";
+	FragTrap C(name);
 	C.takeDamage(3);
 	C.beRepaired(2);
 	C.attack(oponnent);
-	C.highFivesGuys();
+	// std::cout << C.getHp() << std::endl;
 }
