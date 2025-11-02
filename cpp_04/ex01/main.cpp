@@ -1,48 +1,50 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongCat.hpp"
 
 int main (void)
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	const Animal* arr[20];
+	for (int i = 0;i < 20;i++)
+	{
+		if (i < 10)
+			arr[i] = new Cat();
+		else
+			arr[i] = new Dog();
+	}
 
+
+	for (int i = 0;i < 20;i++)
+		std::cout << "animal[" << i << "]'s type: " << arr[i]->getType() << std::endl;
 	std::cout << std::endl << std::endl;
-	std::cout << "j's type: " << j->getType() << " " << std::endl;
-	std::cout << "i's type: " << i->getType() << " " << std::endl;
 
+	for (int i = 0;i < 20;i++)
+		arr[i]->makeSound();
 	std::cout << std::endl << std::endl;
-	j->makeSound();
-	i->makeSound(); //will output the cat sound!
-	meta->makeSound();
 
+	arr[0]->thoughts();
+	arr[15]->thoughts();
 	std::cout << std::endl << std::endl;
-	delete i;
-	delete j;
-	delete meta;
 
-
-
-
-
-
+	for (int i = 0;i < 20;i++)
+		delete arr[i];
 	std::cout << std::endl << std::endl;
-	const WrongAnimal* wA = new WrongAnimal();
-	const WrongAnimal* wC = new WrongCat();
-
-	std::cout << std::endl << std::endl;
-	std::cout << "wA's type: " << wA->getType() << " " << std::endl;
-	std::cout << "wC's type: " << wC->getType() << " " << std::endl;
-
-	std::cout << std::endl << std::endl;
-	wA->makeSound();
-	wC->makeSound(); //will output the wrong cat sound!
-
-	std::cout << std::endl << std::endl;
-	delete wA;
-	delete wC;
 
 
-	return 0;
+
+	const Cat cat1;
+	Cat cat2 = cat1;
+	
+	std::cout << "Address of cat1's brain: " << cat1.getBrain() << std::endl;
+	std::cout << "Address of cat2's brain: " << cat2.getBrain() << std::endl;
+	
+	cat1.getBrain()->thoughts();
+	cat2.getBrain()->thoughts();
+
+	if (cat1.getBrain() != cat2.getBrain())
+	    std::cout << "Deep copy ✅" << std::endl;
+	else
+	    std::cout << "Shallow copy ❌" << std::endl;
+	
+
+	return (0);
 }

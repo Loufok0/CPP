@@ -2,7 +2,7 @@
 
 #include "Animal.hpp"
 
-class Cat : virtual private Animal
+class Cat : virtual public Animal
 {
 	private:
 
@@ -15,6 +15,7 @@ class Cat : virtual private Animal
 		Cat& operator = (const Cat &other);
 		~Cat();
 
+		Brain* getBrain(void) const;
 		void makeSound(void) const;
-
+		void	thoughts(void)	const;
 };

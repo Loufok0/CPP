@@ -12,7 +12,11 @@ class Brain
 
 
 		Brain();
+		Brain(const std::string *ideas);
 		Brain(const Brain &other);
 		Brain& operator = (const Brain &other);
 		~Brain();
+
+		void	setIdeas(const std::string *ideas);
+		void	thoughts(void)	const;
 };

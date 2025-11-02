@@ -1,4 +1,5 @@
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 Animal::Animal() : _type("Animal")
 {
@@ -32,6 +33,11 @@ std::string Animal::getType(void) const
 void Animal::makeSound(void) const
 {
 	std::cout << "Oh, I think this Animal is trying to comunicate" << std::endl;
+}
+
+void Animal::thoughts() const
+{
+	std::cout << "Oh, I think this Animal is thinking" << std::endl;
 }
 
 Brain* Animal::getBrain(void) const
