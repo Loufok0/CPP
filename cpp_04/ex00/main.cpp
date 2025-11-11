@@ -44,5 +44,5 @@ int main (void)
 	delete wC;
 
 
-	return 0;
+	return (0);
 }
