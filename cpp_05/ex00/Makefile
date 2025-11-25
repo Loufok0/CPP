@@ -14,7 +14,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(OBJS) $(CXXFLAGS) -o $(NAME)
-	@echo $(NAME)" compiled!\n"
+	@echo $(NAME)" compiled!\n\n"
 
 %.o: %.cpp
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
@@ -28,3 +28,9 @@ fclean:
 re:
 	@make fclean
 	@make all
+
+run:
+	@make re
+	@make clean
+	@echo "Running " $(NAME) "!\n\n"
+	./$(NAME)
