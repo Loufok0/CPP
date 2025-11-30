@@ -1,16 +1,17 @@
-#include "Bureaucrat.hpp"
+#include "./Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void)
 {
 	std::cout << GREEN "constructors, << overload (geters indirectly)" RESET << std::endl;
 
-	Bureaucrat A;
+	Form A;
 	std::cout << A << std::endl;
 
-	Bureaucrat B("AUXILIAIRE", 70);
+	Form B("AUXILIAIRE", 70);
 	std::cout << B << std::endl;
 
-	Bureaucrat C;
+	Form C;
 	C = B;
 	std::cout << C << std::endl;
 
@@ -23,32 +24,54 @@ int	main(void)
 	std::cout << GREEN "exceptions" RESET << std::endl;
 
 	try	{
-		Bureaucrat E("Error", 151);
-	} catch (const Bureaucrat::E_GradeTooHigh& e) {
+		Form E("Error", 150, 151);
+	} catch (const Form::E_GradeTooHigh& e) {
 		std::cout << "Error catched: " << e.what() << std::endl;
 	}
 	try	{
-		Bureaucrat E("Error", -1);
-	} catch (const Bureaucrat::E_GradeTooLow& e)
+		Form E("Error", 1, -1);
+	} catch (const Form::E_GradeTooLow& e)
 	{
 		std::cout << "Error catched: " << e.what() << std::endl;
 	}
 
 	try	{
-		Bureaucrat E("Error", 150);
-		E.downGrade();
-	} catch (const Bureaucrat::E_GradeTooHigh& e) {
+		Form E("Error", 151, 150);
+	} catch (const Form::E_GradeTooHigh& e) {
 		std::cout << "Error catched: " << e.what() << std::endl;
 	}
 	try	{
-		Bureaucrat F("Error", 1);
-		F.upGrade();
-	} catch (const Bureaucrat::E_GradeTooLow& e) {
+		Form E("Error", -1, 1);
+	} catch (const Form::E_GradeTooLow& e)
+	{
 		std::cout << "Error catched: " << e.what() << std::endl;
 	}
 
+	try	{
+		Form E("Error", 150);
+		E.downGradeExec();
+	} catch (const Form::E_GradeTooHigh& e) {
+		std::cout << "Error catched: " << e.what() << std::endl;
+	}
+	try	{
+		Form F("Error", 1);
+		F.upGradeExec();
+	} catch (const Form::E_GradeTooLow& e) {
+		std::cout << "Error catched: " << e.what() << std::endl;
+	}
 
-
+	try	{
+		Form E("Error", 150);
+		E.downGradeSign();
+	} catch (const Form::E_GradeTooHigh& e) {
+		std::cout << "Error catched: " << e.what() << std::endl;
+	}
+	try	{
+		Form F("Error", 1);
+		F.upGradeSign();
+	} catch (const Form::E_GradeTooLow& e) {
+		std::cout << "Error catched: " << e.what() << std::endl;
+	}
 
 
 	std::cout << std::endl << std::endl;
@@ -59,6 +82,5 @@ int	main(void)
 	A.upGrade();
 	std::cout << "After:" << std::endl;
 	std::cout << A.getGrade() << std::endl;	
-
 
 }

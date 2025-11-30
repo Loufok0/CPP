@@ -31,7 +31,7 @@ class Bureaucrat
 				const char* _msg;
 
 			public:
-				E_GradeTooHigh(void): _msg("ERROR: Grade given is too high!") {}
+				E_GradeTooHigh(void): _msg("ERROR: Grade given to Bureaucrat is too high!") {}
 				const char* what() const throw() {return _msg;}
 		};
 
@@ -41,7 +41,7 @@ class Bureaucrat
 				const char* _msg;
 
 			public:
-				E_GradeTooLow(void): _msg("ERROR: Grade given is too low!") {}
+				E_GradeTooLow(void): _msg("ERROR: Grade given to Bureaucrat is too low!") {}
 				const char* what() const throw() {return _msg;}
 		};
 };
