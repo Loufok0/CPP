@@ -63,3 +63,13 @@ std::ostream&	operator << (std::ostream &os, const Bureaucrat& b)
 	os << b.getName() << ", bureaucrat grade " << ss.str();
 	return (os);
 }
+
+void	Bureaucrat::signForm(Form &F)
+{
+	try {
+		F.beSigned(*this);
+		std::cout << getName() << " signed " << F.getName() << std::endl;
+	} catch (const Form::E_GradeTooLow& e){
+		std::cout << getName() << " couldn’t sign " << F.getName() << " because " << e.what() << std::endl;
+	}
+}

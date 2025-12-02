@@ -5,7 +5,9 @@
 #include <exception>
 #include <sstream>
 #include "colors.hpp"
+#include "Bureaucrat.hpp"
 
+class Bureaucrat;
 
 class Form
 {
@@ -31,6 +33,7 @@ class Form
 		void	upGradeSign(void);
 		void	downGradeSign(void);
 
+		void beSigned(Bureaucrat &B);
 
 		class E_GradeTooHigh : public std::exception
 		{
@@ -38,7 +41,7 @@ class Form
 				const char* _msg;
 
 			public:
-				E_GradeTooHigh(void): _msg("ERROR: Grade given to Form is too high!") {}
+				E_GradeTooHigh(void): _msg("ERROR in Form: Grade given is too high!") {}
 				const char* what() const throw() {return _msg;}
 		};
 
@@ -48,9 +51,10 @@ class Form
 				const char* _msg;
 
 			public:
-				E_GradeTooLow(void): _msg("ERROR: Grade given to Form is too low!") {}
+				E_GradeTooLow(void): _msg("ERROR in Form: Grade given is too low!") {}
 				const char* what() const throw() {return _msg;}
 		};
+
 };
 
 std::ostream&	operator << (std::ostream &os, const Form& f);

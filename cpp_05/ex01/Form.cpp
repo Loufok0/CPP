@@ -90,18 +90,17 @@ void	Form::downGradeSign(void)
 
 std::ostream&	operator << (std::ostream &os, const Form& f)
 {
-	std::stringstream ss;
 	os << f.getName();
-	ss << f.getSignGrade();
-	os << ", grade required to sign it :" << ss.str();
-	ss << f.getExecGrade();
-	os << ", grade required to execute it :" << ss.str();
-	ss << f.getSignature();
-	os << ", signed :" << ss.str();
+	os << ", grade required to sign it :" << f.getSignGrade();
+	os << ", grade required to execute it :" << f.getExecGrade();
+	os << ", signed :" << (f.getSignature() ? "true" : "false");
 	return (os);
 }
 
-void Form::beSigned(void)
+void Form::beSigned(Bureaucrat &B)
 {
-	_signature = true;
+	if (B.getGrade() <= getSignGrade())
+		_signature = true;
+	else
+		throw E_GradeTooLow();
 }
