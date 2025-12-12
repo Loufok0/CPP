@@ -17,9 +17,9 @@ class Animal
 		Animal(std::string type);
 		Animal(const Animal &other);
 		Animal& operator = (const Animal &other);
-		virtual ~Animal() = 0;
+		virtual ~Animal();
 
-		virtual void makeSound(void) const;
+		virtual void makeSound(void) const = 0;
 		std::string getType(void) const;
 		virtual Brain* getBrain(void) const;
 		virtual void	thoughts(void)	const;
