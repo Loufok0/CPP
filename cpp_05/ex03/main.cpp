@@ -14,6 +14,12 @@ int	main(void)
 	AForm *F4 = I.makeForm(std::string("PresidentialPardonForm"), std::string("Boss"));
 	std::cout << std::endl << std::endl;
 
+	Bureaucrat B("Bill", 1);
+
+	B.executeForm(*F2);
+	B.executeForm(*F3);
+	B.executeForm(*F4);
+
 	delete F2;
 	delete F3;
 	delete F4;
