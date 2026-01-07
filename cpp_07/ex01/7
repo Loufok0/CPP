@@ -1,0 +1,51 @@
+#include "iter.hpp"
+
+template <typename T>
+void f(T* a)
+{
+	(*a)++;
+}
+
+template <typename T>
+void g(const T* a)
+{
+	std::cout << "That's a const bro..." << std::endl;
+}
+
+template <typename T>
+void show_arr(T* arr, int size)
+{
+	int i = 0;
+	while (i < size)
+		std::cout << arr[i++] << " ";
+	std::cout << std::endl;
+}
+
+int	main(void)
+{
+	{
+		int ia[] = {1, 8, 3, 7, 0};
+		int size = sizeof(ia) / sizeof(ia[0]);
+		show_arr(ia, size);
+		iter(ia, size, f);
+		size = sizeof(ia) / sizeof(ia[0]);
+		show_arr(ia, size);
+	}
+	{
+		char ia[] = {'r', 'r', 'e', 'y'};
+		char size = sizeof(ia) / sizeof(ia[0]);
+		show_arr(ia, size);
+		iter(ia, size, f);
+		size = sizeof(ia) / sizeof(ia[0]);
+		show_arr(ia, size);
+	}
+
+	{
+		const char ia[] = {'r', 'r', 'e', 'y'};
+		char size = sizeof(ia) / sizeof(ia[0]);
+		show_arr(ia, size);
+		iter(ia, size, g);
+		size = sizeof(ia) / sizeof(ia[0]);
+		show_arr(ia, size);
+	}
+}
