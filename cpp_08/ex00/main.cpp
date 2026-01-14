@@ -39,6 +39,7 @@ int main(void)
 			std::cout << std::endl << std::endl;
 		} catch (const E_NotFound& e){
 			std::cout << "Error: " << e.what() << std::endl;
+			//crash because 4.2f != 4.2f, i would have to use std::find_if to ensure this work for floats and doubles
 		}
 	}
 }
