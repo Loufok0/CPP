@@ -21,7 +21,11 @@ int main(int ac, char **av)
 		return (1);
 	}
 	Btc B;
-	B.printInput();
+	B.parseInput();
+	B.parseData();
+
+	B.printFile(av[1]);
 	B.printData();
+
 
 }

@@ -1,23 +1,23 @@
 #include "./btc.hpp"
 
-Btc::Btc(void) : _input("./input.txt"), _data("./data.csv") {}
-Btc::Btc(std::string input, std::string data) : _input(input), _data(data) {}
+Btc::Btc(void) : _inputName("./input.txt"), _dataName("./data.csv") {}
+Btc::Btc(std::string input, std::string data) : _inputName(input), _dataName(data) {}
 
 Btc::~Btc(void) {}
 
-void Btc::printInput(void)
+void Btc::printFile(std::string name)
 {
-	std::ifstream	input(_input.c_str());
+	std::ifstream	file(name.c_str());
 	std::string	text;
 
-	std::cout << BLUE << "INPUT FILE:" << RESET << std::endl;
+	std::cout << BLUE << "READING FILE " << name << ":"<< RESET << std::endl;
 	while (true)
 	{
-		getline(input, text);
+		getline(file, text);
 
-		if (input.eof())
+		if (file.eof())
 			break ;
-		else if (input.fail() || input.bad())
+		else if (file.fail() || file.bad())
 		{
 			std::cout << ERROR << "Error while reading file" << std::endl;
 			return ;
@@ -28,25 +28,69 @@ void Btc::printInput(void)
 	std::cout << std::endl << std::endl;
 }
 
+void Btc::parseInput(void)
+{
+	std::ifstream	file(_inputName.c_str());
+	std::string	line;
+
+	while (std::getline(file, line))
+	{
+		size_t pos = line.find(" | ");
+
+		if (pos == std::string::npos)
+		{
+			std::cout << ERROR << "Bad input => " << line << std::endl;
+			continue;
+		}
+
+		std::string key = line.substr(0, pos);
+		std::string value = line.substr(pos + 3);
+
+		std::stringstream ss(value);
+		float f;
+		ss >> f;
+		_input.insert(std::make_pair(key, f));
+
+
+		// std::cout << "Key: " << key << " Value: " << value << std::endl;
+	}
+}
+
+void Btc::parseData(void)
+{
+	std::ifstream	file(_dataName.c_str());
+	std::string	line;
+
+	while (std::getline(file, line))
+	{
+		size_t pos = line.find(",");
+
+		if (pos == std::string::npos)
+		{
+			std::cout << ERROR << "Bad input => " << line << std::endl;
+			continue;
+		}
+
+		std::string key = line.substr(0, pos);
+		std::string value = line.substr(pos + 1);
+
+		std::stringstream ss(value);
+		float f;
+		ss >> f;
+		_data.insert(std::make_pair(key, f));
+
+
+		// std::cout << "Key: " << key << " Value: " << value << std::endl;
+	}
+}
+
+
 void Btc::printData(void)
 {
-	std::ifstream	data(_data.c_str());
-	std::string	text;
-
-	std::cout << BLUE << "INPUT FILE:" << RESET << std::endl;
-	while (true)
+	std::multimap<std::string, float>::iterator it = _input.begin();
+	while (it != _input.end())
 	{
-		getline(data, text);
-
-		if (data.eof())
-			break ;
-		else if (data.fail() || data.bad())
-		{
-			std::cout << ERROR << "Error while reading file" << std::endl;
-			return ;
-		}
-		else
-			std::cout << text << std::endl;
+		std::cout << it->first << " :::::::: " << it->second << std::endl;
+		it++;
 	}
-	std::cout << std::endl << std::endl;
 }
