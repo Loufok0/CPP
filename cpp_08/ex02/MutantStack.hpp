@@ -1,7 +1,9 @@
 #pragma once
 #include <iostream>
 #include <iterator>
+#include <vector>
 #include <stack>
+#include <list>
 
 
 template <typename T, typename Container = std::deque<T> >

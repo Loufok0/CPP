@@ -27,7 +27,7 @@ int main()
 		std::cout << std::endl << std::endl;
 	}
 	{
-		MutantStack<int> mstack;
+		MutantStack<int, std::vector<int> > mstack;
 		mstack.push(5);
 		mstack.push(17);
 		std::cout << "Top: " << mstack.top() << std::endl;
@@ -38,8 +38,8 @@ int main()
 		mstack.push(737);
 		//[...]
 		mstack.push(0);
-		MutantStack<int>::const_iterator it = mstack.begin();
-		MutantStack<int>::const_iterator ite = mstack.end();
+		MutantStack<int, std::vector<int> >::const_iterator it = mstack.begin();
+		MutantStack<int, std::vector<int> >::const_iterator ite = mstack.end();
 		++it;
 		--it;
 		while (it != ite)
@@ -47,7 +47,7 @@ int main()
 			std::cout << "it: " << *it << std::endl;
 			++it;
 		}
-		std::stack<int> s(mstack);
+		std::stack<int, std::vector<int> > s(mstack);
 		std::cout << std::endl << std::endl;
 	}
 	return 0;
