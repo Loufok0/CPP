@@ -24,8 +24,9 @@ int main(int ac, char **av)
 	B.parseInput();
 	B.parseData();
 
-	B.printFile(av[1]);
+	// B.printFile(av[1]);
 	B.printData();
+	B.process();
 
 
 }

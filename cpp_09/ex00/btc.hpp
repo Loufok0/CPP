@@ -25,7 +25,9 @@ class Btc
 		void parseInput(void);
 		void parseData(void);
 
+		void process(void);
+
+
 		void printFile(std::string name);
 		void printData(void);
-
 };

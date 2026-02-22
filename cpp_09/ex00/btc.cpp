@@ -87,10 +87,59 @@ void Btc::parseData(void)
 
 void Btc::printData(void)
 {
+	std::multimap<std::string, float>::iterator it1 = _input.begin();
+	while (it1 != _input.end())
+	{
+		std::cout << it1->first << " :::::::: " << it1->second << std::endl;
+		it1++;
+	}
+
+	std::multimap<std::string, float>::iterator it2 = _data.begin();
+	while (it2 != _input.end())
+	{
+		std::cout << it2->first << " :::::::: " << it2->second << std::endl;
+		it2++;
+	}
+
+}
+
+bool validDate(void)
+{
+	return (true);
+}
+
+bool validNumber(float n)
+{
+	if (n < 0)
+	{
+		std::cout << ERROR << "Number too small ( " << n << " )" << std::endl;
+		return (false);
+	}
+	else if (n > 100)
+	{
+		std::cout << ERROR << "Number too large ( " << n << " )" << std::endl;
+		return (false);
+	}
+	else
+		return (true);
+}
+
+void Btc::process(void)
+{
 	std::multimap<std::string, float>::iterator it = _input.begin();
+
 	while (it != _input.end())
 	{
-		std::cout << it->first << " :::::::: " << it->second << std::endl;
-		it++;
+		std::multimap<std::string, float>::iterator tmp = _data.find(it->first);
+
+		if (tmp != _data.end())
+		{
+			if (validDate() && validNumber(it->second))
+				std::cout << it->first << " => " << it->second << " = " << it->second * tmp->second << std::endl;
+		}
+		else
+			std::cout << ERROR << "Date not found: " << it->first << std::endl;
+
+		++it;
 	}
 }
