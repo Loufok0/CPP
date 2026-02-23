@@ -9,13 +9,16 @@
 #include <sstream>
 
 
+#define ss_m std::multimap<std::string, std::string>
+#define ss_it ss_m::iterator
+
 class Btc
 {
 	private:
 		std::string _inputName;
 		std::string _dataName;
-		std::multimap<std::string, float> _input;
-		std::multimap<std::string, float> _data;
+		ss_m _input;
+		ss_m _data;
 
 	public:
 		Btc(void);
@@ -25,6 +28,7 @@ class Btc
 		void parseInput(void);
 		void parseData(void);
 
+		ss_it closestDate(std::string inputDate);
 		void process(void);
 
 
