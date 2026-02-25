@@ -23,6 +23,11 @@ class Btc
 	public:
 		Btc(void);
 		Btc(std::string input, std::string data);
+
+		Btc(const Btc &other);
+		Btc& operator = (const Btc &other);
+
+
 		~Btc(void);
 
 		void parseInput(void);

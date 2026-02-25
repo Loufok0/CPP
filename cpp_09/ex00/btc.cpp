@@ -3,6 +3,14 @@
 Btc::Btc(void) : _inputName("./input.txt"), _dataName("./data.csv") {}
 Btc::Btc(std::string input, std::string data) : _inputName(input), _dataName(data) {}
 
+Btc::Btc(const Btc &other) {(void) other;}
+Btc& Btc::operator = (const Btc &other)
+{
+	(void) other;
+	return (*this);
+}
+
+
 Btc::~Btc(void) {}
 
 void Btc::printFile(std::string name)
