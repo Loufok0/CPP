@@ -23,7 +23,7 @@ int	main(void)
 
 	{
 		std::cout << std::endl << std::endl;
-		std::cout << GREEN "exceptions" RESET << std::endl;
+		std::cout << GREEN "Exceptions:" RESET << std::endl;
 	
 		try	{
 			Form E("Error", 150, 151);
@@ -49,57 +49,22 @@ int	main(void)
 			std::cout << "Error catched: " << e.what() << std::endl;
 		}
 	
-		try	{
-			Form E("Error", 100, 150);
-			E.downGradeExec();
-		} catch (const Form::E_GradeTooHigh& e) {
-			std::cout << "Error catched: " << e.what() << std::endl;
-		}
-		try	{
-			Form F("Error", 100, 1);
-			F.upGradeExec();
-		} catch (const Form::E_GradeTooLow& e) {
-			std::cout << "Error catched: " << e.what() << std::endl;
-		}
-	
-		try	{
-			Form E("Error", 150, 100);
-			E.downGradeSign();
-		} catch (const Form::E_GradeTooHigh& e) {
-			std::cout << "Error catched: " << e.what() << std::endl;
-		}
-		try	{
-			Form F("Error", 1, 100);
-			F.upGradeSign();
-		} catch (const Form::E_GradeTooLow& e) {
-			std::cout << "Error catched: " << e.what() << std::endl;
-		}
 	}
 
 
 	{
 		std::cout << std::endl << std::endl;
-		std::cout << GREEN "upgrade and downgrade" RESET << std::endl;
+		std::cout << GREEN "Get grades:" RESET << std::endl;
 	
 		Form A;
-		std::cout << "Sign level Before:" << std::endl;
-		std::cout << A.getSignGrade() << std::endl;	
-		A.upGradeSign();
-		std::cout << "Sign level After:" << std::endl;
-		std::cout << A.getSignGrade() << std::endl;	
-	
-	
-		std::cout << "Exec level Before:" << std::endl;
-		std::cout << A.getExecGrade() << std::endl;	
-		A.upGradeExec();
-		std::cout << "Exec level After:" << std::endl;
-		std::cout << A.getExecGrade() << std::endl;
+		std::cout << "Sign: " << A.getSignGrade() << std::endl;	
+		std::cout << "Exec: " << A.getExecGrade() << std::endl;	
 	}
 
 
 	{
 		std::cout << std::endl << std::endl;
-		std::cout << GREEN "sign and exec" RESET << std::endl;
+		std::cout << GREEN "Sign:" RESET << std::endl;
 
 		Bureaucrat B("Boss", 1);
 		Form F("big form", 1, 1);
@@ -111,12 +76,22 @@ int	main(void)
 			B.signForm(F);
 			B.signForm(f);
 		}
-
 		{
 			std::cout << std::endl;
 			b.signForm(F);
 			b.signForm(f);
 		}
+
+//		{
+//			std::cout << std::endl;
+//			B.execForm(F);
+//			B.execForm(f);
+//		}
+//		{
+//			std::cout << std::endl;
+//			b.execForm(F);
+//			b.execForm(f);
+//		}
 		std::cout << std::endl;
 	}
 }

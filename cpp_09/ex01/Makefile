@@ -25,3 +25,17 @@ clean:
 fclean:
 	$(RM) $(OBJS) $(NAME)
 
+re:
+	@make fclean
+	@make all
+
+run:
+	@make re
+	@make clean
+	@echo "Running " $(NAME) "!\n\n"
+	./$(NAME)
+
+
+print-name:
+	@echo $(NAME)
+

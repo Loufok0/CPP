@@ -31,10 +31,6 @@ class AForm
 		int	getExecGrade(void) const;
 		int	getSignGrade(void) const;
 		bool	getSignature(void) const;
-		void	upGradeExec(void);
-		void	downGradeExec(void);
-		void	upGradeSign(void);
-		void	downGradeSign(void);
 
 		void beSigned(Bureaucrat &B);
 

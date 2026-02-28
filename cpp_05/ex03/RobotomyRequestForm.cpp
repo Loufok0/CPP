@@ -5,7 +5,7 @@ RobotomyRequestForm::RobotomyRequestForm(void) : AForm("A random RobotomyRequest
 	std::cout << "RobotomyRequestForm's constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("A random RobotomyRequestForm form", 72, 47), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("A random RobotomyRequestForm form", 72, 45), _target(target)
 {
 	std::cout << "RobotomyRequestForm's parameterized constructor called" << std::endl;
 }

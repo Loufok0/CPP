@@ -18,19 +18,16 @@ Form::Form(const std::string name, int signGrade, int execGrade) : _name(name), 
 	std::cout << "Form's parameterized constructor called" << std::endl;
 }
 
-Form::Form(const Form &other)
+Form::Form(const Form &other) : _signGrade(other._signGrade), _execGrade(other._execGrade)
 {
-	this->_signGrade = other._signGrade;
-	this->_execGrade = other._execGrade;
 	this->_signature = other._signature;
 	std::cout << "Form's copy constructor called" << std::endl;
 }
 
 Form&	Form::operator =(const Form &other)
 {
-	this->_signGrade = other._signGrade;
-	this->_execGrade = other._execGrade;
-	this->_signature = other._signature;
+	if (this != &other)
+		(void)other;
 	std::cout << "Form's copy assignation constructor called" << std::endl;
 	return (*this);
 }
@@ -58,34 +55,6 @@ int	Form::getSignGrade(void) const
 bool	Form::getSignature(void) const
 {
 	return (_signature);
-}
-
-void	Form::upGradeExec(void)
-{
-	if (_execGrade <= 1)
-		throw E_GradeTooLow();
-	_execGrade--;
-}
-
-void	Form::downGradeExec(void)
-{
-	if (_execGrade >= 150)
-		throw E_GradeTooHigh();
-	_execGrade++;
-}
-
-void	Form::upGradeSign(void)
-{
-	if (_signGrade <= 1)
-		throw E_GradeTooLow();
-	_signGrade--;
-}
-
-void	Form::downGradeSign(void)
-{
-	if (_signGrade >= 150)
-		throw E_GradeTooHigh();
-	_signGrade++;
 }
 
 std::ostream&	operator << (std::ostream &os, const Form& f)

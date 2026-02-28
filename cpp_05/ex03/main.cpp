@@ -19,6 +19,18 @@ int	main(void)
 	B.executeForm(*F2);
 	B.executeForm(*F3);
 	B.executeForm(*F4);
+	std::cout << std::endl << std::endl;
+
+	B.signAForm(*F2);
+	B.signAForm(*F3);
+	B.signAForm(*F4);
+	std::cout << std::endl << std::endl;
+
+	B.executeForm(*F2);
+	B.executeForm(*F3);
+	B.executeForm(*F4);
+	std::cout << std::endl << std::endl;
+
 
 	delete F2;
 	delete F3;

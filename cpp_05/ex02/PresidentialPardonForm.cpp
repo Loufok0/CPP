@@ -5,7 +5,7 @@ PresidentialPardonForm::PresidentialPardonForm(void) : AForm("A random President
 	std::cout << "PresidentialPardonForm's constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm("A random PresidentialPardonForm form", 25, 47), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm("A random PresidentialPardonForm form", 25, 5), _target(target)
 {
 	std::cout << "PresidentialPardonForm's parameterized constructor called" << std::endl;
 }
