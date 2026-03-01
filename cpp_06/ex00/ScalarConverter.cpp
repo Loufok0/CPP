@@ -1,6 +1,8 @@
 #include "./ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter(void) {};
+ScalarConverter::ScalarConverter(const ScalarConverter &other) {(void)other;};
+ScalarConverter& ScalarConverter::operator = (const ScalarConverter &other) {(void)other; return (*this);};
 ScalarConverter::~ScalarConverter(void) {};
 
 void ScalarConverter::convert(const std::string literal)
@@ -21,24 +23,25 @@ void ScalarConverter::convert(const std::string literal)
 	else if (type == 'c')
 	{
 		std::cout << "char: ";
-		if (!isprint(literal[0]))
+		if (!isprint(static_cast<char>(atoi(literal.c_str()))))
 			std::cout << "Non displayable" << std::endl;
 		else
 			std::cout << literal[0] << std::endl;
 	
-		std::cout << "int: " << (int)literal[0] << std::endl;
-		std::cout << "float: " << (float)literal[0] << ".0f" << std::endl;
-		std::cout << "double: " << (double)literal[0] << ".0" << std::endl;
+		std::cout << "int: " << static_cast<int>(literal[0]) << std::endl;
+		std::cout << "float: " << static_cast<float>(literal[0]) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(literal[0]) << ".0" << std::endl;
 	}
 	else
 	{
 		float rest = atof(literal.c_str());
 		rest -= floor(rest);
 		std::cout << "char: ";
-		if (atoi(literal.c_str()) == 127 || (atoi(literal.c_str()) >= 0 && atoi(literal.c_str()) <= 31))
+		if (!isprint(static_cast<char>(atoi(literal.c_str()))))
 			std::cout << "Non displayable" << std::endl;
+
 		else
-			std::cout << (char)atoi(literal.c_str()) << std::endl;
+			std::cout << static_cast<char>(atoi(literal.c_str())) << std::endl;
 	
 		if (atof(literal.c_str()) > INT_MAX || atof(literal.c_str()) < INT_MIN)
 			std::cout << "int: overflow" << std::endl;
@@ -85,12 +88,27 @@ void diplayNan(std::string literal)
 	
 }
 
+bool is_number(const std::string& s)
+{
+	int count = 0;
+	std::string::const_iterator it = s.begin();
+	while (it != s.end() && (std::isdigit(*it) || *it == '.'))
+	{
+		if (*it == '.')
+			count++;
+		if (count > 1)
+			return (false);
+		it++;
+	}
+	return (!s.empty() && it == s.end());
+}
+
 char getType(const std::string literal)
 {
 	int i = 0;
 	if (literal[0] == '+' || literal[0] == '-')
 		i++;
-	if (isdigit(literal[i]))
+	if (is_number(literal))
 	{
 		if (strchr(literal.c_str(), 'f'))
 			return ('f'); //float
