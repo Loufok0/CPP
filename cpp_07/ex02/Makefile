@@ -3,7 +3,7 @@ NAME = Array
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS =	main2.cpp
+SRCS =	main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

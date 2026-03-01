@@ -1,15 +1,15 @@
 #include "iter.hpp"
 
 template <typename T>
-void f(T* a)
+void f(T &a)
 {
-	(*a)++;
+	a++;
 }
 
 template <typename T>
-void g(const T* a)
+void g(T const &a)
 {
-	std::cout << (*a) << "? That's a const bro, what did you want me to do with..." << std::endl;
+	std::cout << a << "? That's a const bro, what did you want me to do with..." << std::endl;
 }
 
 template <typename T>
@@ -20,6 +20,7 @@ void show_arr(T* arr, int size)
 		std::cout << arr[i++] << " ";
 	std::cout << std::endl;
 }
+
 
 int	main(void)
 {
@@ -55,3 +56,4 @@ int	main(void)
 		std::cout << std::endl << std::endl;
 	}
 }
+

@@ -9,7 +9,7 @@ Array<T>::Array(unsigned int n) : _arr(new T[n]()), _size(n)
 {
 	unsigned int i = 0;
 	while (i < n)
-		_arr[i++] = 0;
+		_arr[i++] = T();
 	std::cout << "Array parameterized constructor called" << std::endl;
 }
 
@@ -22,7 +22,7 @@ Array<T>::Array(const Array &other)
 		_arr = new T[_size]();
 		unsigned int i = 0;
 		while (i < _size)
-			_arr[i++] = 0;
+			_arr[i++] = T();
 	}
 	std::cout << "Array copy constructor called" << std::endl;
 }
@@ -36,7 +36,7 @@ Array<T>& Array<T>::operator = (const Array &other)
 		_arr = new T[_size]();
 		unsigned int i = 0;
 		while (i < _size)
-			_arr[i++] = 0;
+			_arr[i++] = T();
 	}
 	std::cout << "Array copy assignation constructor called" << std::endl;
 }
