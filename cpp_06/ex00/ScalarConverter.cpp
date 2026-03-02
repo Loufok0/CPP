@@ -9,7 +9,6 @@ void ScalarConverter::convert(const std::string literal)
 {
 
 	char type = getType(literal);
-	std::cout << RED << type << RESET << std::endl;
 	if (type == 'E')
 	{
 		std::cout << RED << "ERROR: Unrecognised type for " << literal << RESET << std::endl;
@@ -23,7 +22,7 @@ void ScalarConverter::convert(const std::string literal)
 	else if (type == 'c')
 	{
 		std::cout << "char: ";
-		if (!isprint(static_cast<char>(atoi(literal.c_str()))))
+		if (!isprint(static_cast<char>(literal.c_str()[0])))
 			std::cout << "Non displayable" << std::endl;
 		else
 			std::cout << literal[0] << std::endl;
@@ -88,19 +87,39 @@ void diplayNan(std::string literal)
 	
 }
 
+
 bool is_number(const std::string& s)
 {
-	int count = 0;
-	std::string::const_iterator it = s.begin();
-	while (it != s.end() && (std::isdigit(*it) || *it == '.'))
+	if (s.empty())
+		return false;
+
+	int dot_count = 0;
+	bool has_digit = false;
+
+	for (size_t i = 0; i < s.size(); ++i)
 	{
-		if (*it == '.')
-			count++;
-		if (count > 1)
-			return (false);
-		it++;
+		if (std::isdigit(s[i]))
+		{
+			has_digit = true;
+		}
+		else if (s[i] == '.')
+		{
+			dot_count++;
+			if (dot_count > 1)
+				return false;
+		}
+		else if (s[i] == 'f')
+		{
+			// 'f' autorisé uniquement à la fin
+			return (i == s.size() - 1) && has_digit;
+		}
+		else
+		{
+			return false;
+		}
 	}
-	return (!s.empty() && it == s.end());
+
+	return has_digit;
 }
 
 char getType(const std::string literal)
