@@ -9,6 +9,7 @@ void ScalarConverter::convert(const std::string literal)
 {
 
 	char type = getType(literal);
+	std::cout << RED << "Type: " << type << RESET << std::endl;
 	if (type == 'E')
 	{
 		std::cout << RED << "ERROR: Unrecognised type for " << literal << RESET << std::endl;
@@ -36,12 +37,15 @@ void ScalarConverter::convert(const std::string literal)
 		float rest = atof(literal.c_str());
 		rest -= floor(rest);
 		std::cout << "char: ";
-		if (!isprint(static_cast<char>(atoi(literal.c_str()))))
+		int value = atoi(literal.c_str());
+		
+		if (value < 0 || value > 127)
+			std::cout << "impossible" << std::endl;
+		else if (!isprint(value))
 			std::cout << "Non displayable" << std::endl;
-
 		else
-			std::cout << static_cast<char>(atoi(literal.c_str())) << std::endl;
-	
+			std::cout << "" << static_cast<char>(value) << std::endl;
+
 		if (atof(literal.c_str()) > INT_MAX || atof(literal.c_str()) < INT_MIN)
 			std::cout << "int: overflow" << std::endl;
 		else
