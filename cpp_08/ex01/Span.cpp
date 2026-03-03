@@ -79,19 +79,15 @@ int Span::shortestSpan()
 int Span::longestSpan()
 {
 	if (_nElements <= 1)
-		throw(NotEnoughElements());
+		throw NotEnoughElements();
 
-	int min = S[0];
-	int max = S[0];
-	unsigned int i = -1;
-	while (++i < _nElements)
-	{
-		if (S[i] < min)
-			min = S[i];
-		if (S[i] > max)
-			max = S[i];
-	}
-	return (max - min);
+	std::vector<int>::iterator min;
+	std::vector<int>::iterator max;
+
+	min = std::min_element(S.begin(), S.begin() + _nElements);
+	max = std::max_element(S.begin(), S.begin() + _nElements);
+
+	return *max - *min;
 }
 
 void Span::addMultipleNumber(int *n, unsigned int size)
