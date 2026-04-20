@@ -35,6 +35,7 @@ void RPN::eval(void)
 	size_t prev = 0;
 	size_t pos = 0;
 	long int res = 0;
+	int last = 0;
 	do
 	{
 		pos = _rpn.find(" ", prev);
@@ -46,6 +47,7 @@ void RPN::eval(void)
 			ss >> i;
 
 			_s.push(i);
+			last = i;
 			prev = pos + 1;
 		}
 		else if (is_operator(tmp))
@@ -60,20 +62,21 @@ void RPN::eval(void)
 			_s.pop();
 			switch(tmp[0]) {
 				case '/':
+					if (s_z == 0)
+					{
+						std::cout << ERROR << "Division by zero" << std::endl;
+						return;
+					}
 					res = _s.top() / s_z;
-					prev = pos + 1;
 					break;
 				case '-':
 					res = _s.top() - s_z;
-					prev = pos + 1;
 					break;
 				case '+':
 					res = _s.top() + s_z;
-					prev = pos + 1;
 					break;
 				case '*':
 					res = _s.top() * s_z ;
-					prev = pos + 1;
 					break;
 				default:
 					std::cout << ERROR << "Operator swich case problem: '" << tmp << "'" << std::endl;
@@ -97,6 +100,12 @@ void RPN::eval(void)
 		}
 	}	
 	while (pos != std::string::npos);
+	if (_s.size() != 1)
+	{
+		std::cout << ERROR << "Invalid RPN expression, too many remaining numbers in the stack (stack size = " << _s.size() << "), you probably put too much numbers, you may tryna add less of them in order to make it work... yeah, after a long reflexion i think you may need to remove some of them, you may begin by the last one for example, the " << last << ", good luck, you can do it! " << std::endl;
+		return;
+	}
+
 	std::cout << GREEN << "RESULT: " << _s.top() << std::endl;
 
 	return;
