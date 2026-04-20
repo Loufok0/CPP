@@ -25,6 +25,9 @@ bool is_operator(std::string& tmp)
 {
 	static const std::string op = "+-/*";
 
+	if (tmp.size() > 1)
+		return (false);
+
 	if (op.find(tmp[0]) == std::string::npos)
 		return (false);
 	return (true);
@@ -54,7 +57,7 @@ void RPN::eval(void)
 		{
 			if (_s.size() < 2)
 			{
-				std::cout << ERROR << "Not enough numbers before operand " << tmp << std::endl;
+				std::cerr << ERROR << "Not enough numbers before operand " << tmp << std::endl;
 				return;
 			}
 
@@ -64,7 +67,7 @@ void RPN::eval(void)
 				case '/':
 					if (s_z == 0)
 					{
-						std::cout << ERROR << "Division by zero" << std::endl;
+						std::cerr << ERROR << "Division by zero" << std::endl;
 						return;
 					}
 					res = _s.top() / s_z;
@@ -79,15 +82,13 @@ void RPN::eval(void)
 					res = _s.top() * s_z ;
 					break;
 				default:
-					std::cout << ERROR << "Operator swich case problem: '" << tmp << "'" << std::endl;
+					std::cerr << ERROR << "Operator swich case problem: '" << tmp << "'" << std::endl;
 					return;
 			}
 			_s.pop();
 			_s.push(res);
 			prev = pos + 1;
 		}
-		else if (pos == std::string::npos)
-			continue;
 		else if (tmp == "")
 		{
 			prev = pos + 1;
@@ -95,14 +96,14 @@ void RPN::eval(void)
 		}
 		else
 		{
-			std::cout << ERROR << "Non wanted character: \"" << tmp << "\"" << std::endl;
+			std::cerr << ERROR << "Non wanted character: \"" << tmp << "\"" << std::endl;
 			return;
 		}
 	}	
 	while (pos != std::string::npos);
 	if (_s.size() != 1)
 	{
-		std::cout << ERROR << "Invalid RPN expression, too many remaining numbers in the stack (stack size = " << _s.size() << "), you probably put too much numbers, you may tryna add less of them in order to make it work... yeah, after a long reflexion i think you may need to remove some of them, you may begin by the last one for example, the " << last << ", good luck, you can do it! " << std::endl;
+		std::cerr << ERROR << "Invalid RPN expression, too many remaining numbers in the stack (stack size = " << _s.size() << "), you probably put too much numbers, you may tryna add less of them in order to make it work... yeah, after a long reflexion i think you may need to remove some of them, you may begin by the last one for example, the " << last << ", good luck, you can do it! " << std::endl;
 		return;
 	}
 
