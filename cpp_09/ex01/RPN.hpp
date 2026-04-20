@@ -18,6 +18,6 @@ class RPN
 		RPN& operator =(const RPN& other);
 		~RPN(void);
 
-		long int eval(void);
+		void eval(void);
 
 };

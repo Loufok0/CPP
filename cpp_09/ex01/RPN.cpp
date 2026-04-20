@@ -21,7 +21,7 @@ bool is_number(const std::string& s)
 	return (!s.empty() && it == s.end());
 }
 
-bool is_operator(std::string tmp)
+bool is_operator(std::string& tmp)
 {
 	static const std::string op = "+-/*";
 
@@ -30,20 +30,15 @@ bool is_operator(std::string tmp)
 	return (true);
 }
 
-long int RPN::eval(void)
+void RPN::eval(void)
 {
 	size_t prev = 0;
 	size_t pos = 0;
 	long int res = 0;
-	while ((pos = _rpn.find(" ", prev)) != std::string::npos)
+	do
 	{
-		if (pos == std::string::npos)
-		{
-			std::cout << ERROR << "Error in input" << std::endl;
-			return (-1);
-		}
-
-		std::string tmp = _rpn.substr(prev, pos);
+		pos = _rpn.find(" ", prev);
+		std::string tmp = _rpn.substr(prev, pos - prev);
 		if (is_number(tmp))
 		{
 			std::stringstream ss(tmp);
@@ -53,47 +48,57 @@ long int RPN::eval(void)
 			_s.push(i);
 			prev = pos + 1;
 		}
-		else if (is_operator(tmp.substr(pos - 1)))
+		else if (is_operator(tmp))
 		{
 			if (_s.size() < 2)
 			{
 				std::cout << ERROR << "Not enough numbers before operand " << tmp << std::endl;
-				return (-1);
+				return;
 			}
 
 			long int s_z = _s.top();
 			_s.pop();
-			switch(tmp[0] - 57) {
-				case 0:
-					res = s_z / _s.top();
+			switch(tmp[0]) {
+				case '/':
+					res = _s.top() / s_z;
 					prev = pos + 1;
 					break;
-				case 2:
-					res = s_z - _s.top();
+				case '-':
+					res = _s.top() - s_z;
 					prev = pos + 1;
 					break;
-				case 4:
-					res = s_z + _s.top();
+				case '+':
+					res = _s.top() + s_z;
 					prev = pos + 1;
 					break;
-				case 5:
-					res = s_z * _s.top();
+				case '*':
+					res = _s.top() * s_z ;
 					prev = pos + 1;
 					break;
 				default:
-					std::cout << ERROR << "Operator swich case problem:" << tmp << std::endl;
-					return (-1);
+					std::cout << ERROR << "Operator swich case problem: '" << tmp << "'" << std::endl;
+					return;
 			}
 			_s.pop();
 			_s.push(res);
 			prev = pos + 1;
 		}
+		else if (pos == std::string::npos)
+			continue;
+		else if (tmp == "")
+		{
+			prev = pos + 1;
+			continue;
+		}
 		else
 		{
-			std::cout << ERROR << "END" << _s.top() << std::endl;
-			return (_s.top());
+			std::cout << ERROR << "Non wanted character: \"" << tmp << "\"" << std::endl;
+			return;
 		}
 	}	
-	return (_s.top());
+	while (pos != std::string::npos);
+	std::cout << GREEN << "RESULT: " << _s.top() << std::endl;
+
+	return;
 }
 
