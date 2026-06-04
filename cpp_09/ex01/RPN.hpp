@@ -3,8 +3,6 @@
 #include <sstream>
 #include "./colors.hpp"
 
-#define s_it std::deque::iterator
-
 class RPN
 {
 	private:

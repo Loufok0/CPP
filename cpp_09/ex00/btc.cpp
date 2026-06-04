@@ -204,7 +204,7 @@ bool validNumber(std::string n)
 		std::cout << ERROR << "Number too small ( " << n << " )" << std::endl;
 		return (false);
 	}
-	else if (f > 100)
+	else if (f > 1000)
 	{
 		std::cout << ERROR << "Number too large ( " << n << " )" << std::endl;
 		return (false);
