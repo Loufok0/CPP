@@ -31,3 +31,4 @@
 
 
 # define ERROR       RED "Error: " RESET
+# define DEBUG       BLUE "Debug: " RESET
